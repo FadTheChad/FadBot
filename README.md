@@ -22,7 +22,7 @@ Here are some things that you can expect from the bot:
 * Fad The Chad
 
 ## Version
-**Current Version:** v0.1.0
+**Current Version:** v0.2.0
 
 See `CHANGELOG.md` for all changes
 
