@@ -3,6 +3,7 @@ const { MessageEmbed } = require('discord.js')
 module.exports = {
     name: 'ping',
     description: 'Ping!',
+    category: 'misc',
     run(client, message, args) {
         message.channel.send('Pinging...')
             .then(m => {
@@ -17,7 +18,7 @@ module.exports = {
                     .setTimestamp()
                     .setColor(0xFFFF00)
                 
-                m.edit({content: 'Done!', embeds: [embed]})            
+                m.edit({content: null, embeds: [embed]})            
                 
                 
             })
