@@ -1,3 +1,5 @@
+const { MessageEmbed } = require("discord.js")
+
 module.exports = {
     name: 'ban',
     description: 'bans the user',
@@ -9,6 +11,14 @@ module.exports = {
         //if the target is not found
         if (!target || !args[0]) return message.channel.send('Please provide a valid user to ban')
         
-        message.channel.send(`<@${target.id}> has been banned!`)
+        const reason = args.slice(1).join(' ') || 'No reason specified'
+
+        const banEmbed = new MessageEmbed()
+            .setTitle('User Banned!')
+            .addField('Banned User', target.user.tag)
+            .addField('Reason', reason)
+        
+
+        message.channel.send(`<@${target.id}> has been banned for ${reason}`)
     }
 }
