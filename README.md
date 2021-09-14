@@ -7,7 +7,7 @@
 </h2>
 
 # About The Project
-FadBot is a multipurpose and open-source discord bot currently being developed using javascript. Currently at the time of `v0.1.0` it doesn't really do much, but i will try my best to frequently add more features.
+FadBot is a multipurpose and open-source discord bot currently being developed using javascript. Currently at the time of `v0.x.x` it doesn't really do much, but i will try my best to frequently add more features.
 
 Here are some things that you can expect from the bot:
 
