@@ -10,10 +10,12 @@ module.exports = {
         const args = message.content.slice(prefix.length).trim().split(/ +/)
         const commandName = args.shift().toLowerCase()
         
-        if (!client.commands.has(commandName)) return
+        // get the command through the command name, or one of the aliases of the command
+        const command = client.commands.get(commandName) || client.commands.find(cmd => cmd.aliases && cmd.aliases.includes(commandName))
         
-        const command = client.commands.get(commandName)
-        
+        //if the command does not exist, we can simply ignore
+        if (!command) return
+
         if (command.permissions) {
             let { permissions } = command
                 

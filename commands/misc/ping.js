@@ -3,6 +3,7 @@ const { MessageEmbed } = require('discord.js')
 module.exports = {
     name: 'ping',
     description: 'Ping!',
+    aliases: ['test'],
     category: 'misc',
     run(client, message, args) {
         message.channel.send('Pinging...')
@@ -20,8 +21,6 @@ module.exports = {
                 
                 m.edit({content: null, embeds: [embed]})            
                 
-                
             })
-        
     }
 }

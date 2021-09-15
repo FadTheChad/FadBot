@@ -29,9 +29,10 @@ for (const folder of client.categories) {
     }
 }
 
-// loads the events
+// collection of the event files in the 'events' folder
 const eventFiles = fs.readdirSync('./events').filter(file => file.endsWith('.js'))
 
+// loads the events
 for (const file of eventFiles) {
 	const event = require(`./events/${file}`)
 	if (event.once) {

@@ -3,6 +3,7 @@ const { MessageEmbed } = require("discord.js")
 module.exports = {
     name: 'botinfo',
     description: 'Sends info of FadBot',
+    aliases: ['bi'],
     category: 'moderation',
     run (client, message, args) {
         const embed = new MessageEmbed()

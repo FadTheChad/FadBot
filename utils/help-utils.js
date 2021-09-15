@@ -18,7 +18,7 @@ module.exports = {
         location.send({embeds: [embed]});
     },
 
-    sendCommandOrCategoryHelp: (client, location, searchedCommand) => {
+    sendCommandOrCategoryHelp: (client, location, searchedCommand, authorId) => {
         const cmdOrCat = client.commands.get(searchedCommand.toLowerCase()) || client.categories.find(cat => cat.toLowerCase() === searchedCommand.toLowerCase())
 
         if (!cmdOrCat) {
@@ -45,13 +45,16 @@ module.exports = {
             const embed = new MessageEmbed()
                 .setTitle('Command Found!')
                 .addField('Command', cmdOrCat.name)
-                .setColor(0xFFFF00)
-            
-            if (cmdOrCat.category) embed.addField('Category', cmdOrCat.category)
+                .setColor(0xFFFF00)  
 
+            if (cmdOrCat.aliases) embed.addField('Aliases', cmdOrCat.aliases.join(', '))
+            if (cmdOrCat.category) embed.addField('Category', cmdOrCat.category)
             if (cmdOrCat.description) embed.addField('Description', cmdOrCat.description)
+            if (cmdOrCat.usage) embed.addField('Usage', '`' + prefix + cmdOrCat.name + ' ' + cmdOrCat.usage + '`')
 
             embed.addField('Permissions', cmdOrCat.permissions ? (typeof cmdOrCat.permissions === 'string' ? cmdOrCat.permissions : cmdOrCat.permissions.join(', ')) : 'Everyone')
+            
+            embed.setFooter(`${authorId}${cmdOrCat.usage ? ' | <> - required, [] - optional' : ''}`)
 
             location.send({embeds: [embed]})
         }
