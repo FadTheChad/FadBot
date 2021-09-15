@@ -1,4 +1,4 @@
-const { sendFullHelp, sendCommandHelp } = require("../../utils/help-utils")
+const { sendFullHelp, sendCommandOrCategoryHelp } = require("../../utils/help-utils")
 
 module.exports = {
     name: 'help',
@@ -7,6 +7,6 @@ module.exports = {
     run(client, message, args) {
         !args[0] 
         ? sendFullHelp(client, message.channel) 
-        : sendCommandHelp(client, message.channel, args[0])
+        : sendCommandOrCategoryHelp(client, message.channel, args[0])
     }
 }

@@ -12,36 +12,49 @@ module.exports = {
         for (let cat of client.categories) {
             const commands = client.commands.filter(c => c.category == cat);
 
-            embed.addField(cat.charAt(0).toUpperCase() + cat.slice(1), commands.map((c) => `\`${c.name}\``).join(", "));
+            embed.addField(cat.charAt(0).toUpperCase() + cat.slice(1), commands.map(c => `\`${c.name}\``).join(", "));
         }
         
         location.send({embeds: [embed]});
     },
 
-    sendCommandHelp: (client, location, searchedCommand) => {
-        const cmd = client.commands.get(searchedCommand.toLowerCase())
+    sendCommandOrCategoryHelp: (client, location, searchedCommand) => {
+        const cmdOrCat = client.commands.get(searchedCommand.toLowerCase()) || client.categories.find(cat => cat.toLowerCase() === searchedCommand.toLowerCase())
 
-        if (!cmd) {
+        if (!cmdOrCat) {
             const errEmbed = new MessageEmbed()
-                .setTitle('Command Not Found')
-                .setDescription('That command doesn\'t seem to exist. run `' + prefix + 'help` for a whole list of commands!')
+                .setTitle('Command/Category Not Found')
+                .setDescription('That command/category doesn\'t seem to exist. run `' + prefix + 'help` for a whole list of commands and categories!')
                 .setColor(0xFFFF00)
             
             return location.send({ embeds: [errEmbed] })
         }
 
-        const embed = new MessageEmbed()
-            .setTitle('Command Found!')
-            .addField('Command', cmd.name)
-            .setColor(0xFFFF00)
+        // if the searched word is found to be one of the categories
+        if (client.categories.includes(cmdOrCat)) {
+            const commands = client.commands.filter(c => c.category === cmdOrCat)
             
-        if (cmd.category) embed.addField('Category', cmd.category)
+            const embed = new MessageEmbed()
+                .setTitle('Category Found!')
+                .addField('Category', cmdOrCat)
+                .addField(`${cmdOrCat.charAt(0).toUpperCase() + cmdOrCat.slice(1)} Commands`, commands.map(c => `\`${c.name}\``).join(', '))
+                .setColor(0xFFFF00)
 
-        if (cmd.description) embed.addField('Description', cmd.description)
+            location.send({ embeds: [embed] })
+        } else {
+            const embed = new MessageEmbed()
+                .setTitle('Command Found!')
+                .addField('Command', cmdOrCat.name)
+                .setColor(0xFFFF00)
+            
+            if (cmdOrCat.category) embed.addField('Category', cmdOrCat.category)
 
-        embed.addField('Permissions', cmd.permissions ? (typeof cmd.permissions === 'string' ? cmd.permissions : cmd.permissions.join(', ')) : 'Everyone')
+            if (cmdOrCat.description) embed.addField('Description', cmdOrCat.description)
 
-        location.send({embeds: [embed]})
+            embed.addField('Permissions', cmdOrCat.permissions ? (typeof cmdOrCat.permissions === 'string' ? cmdOrCat.permissions : cmdOrCat.permissions.join(', ')) : 'Everyone')
+
+            location.send({embeds: [embed]})
+        }
     }
 }
 
