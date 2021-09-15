@@ -1,5 +1,10 @@
 # Versions
 
+## v0.3.0 9/15/21
+- added a botinfo cmd
+- implemented command aliases and usage
+- help command now has an option to show all commands in a specific category, and in the case of showing one specifc command, it now shows that command's usage and aliases aswell (if any)
+
 ## v0.2.0 9/14/21
 - added a help cmd
 - improved ping and ban cmd
