@@ -12,7 +12,7 @@ module.exports = {
                 const apiLatency = Math.round(client.ws.ping)
                 
                 const embed = new MessageEmbed()
-                    .setTitle(':white_check_mark: Pong!')
+                    .setTitle('<:FadBot_Tick:887599870024761434> Pong!')
                     .addField('Latency', `\`${latency}\`ms`)
                     .addField('API Latency', `\`${apiLatency}\`ms`)
                     .setFooter(message.author.id)

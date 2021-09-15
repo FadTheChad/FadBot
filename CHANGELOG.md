@@ -1,5 +1,8 @@
 # Versions
 
+## v0.3.1 9/15/21 - 2
+- Accidently used the default emojis while i had my own special ones. Fixed.
+
 ## v0.3.0 9/15/21
 - added a botinfo cmd
 - implemented command aliases and usage

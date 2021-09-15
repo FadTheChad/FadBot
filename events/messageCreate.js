@@ -47,7 +47,7 @@ module.exports = {
             console.error(err);
                 
             const errEmbed = new MessageEmbed()
-                .setTitle(':negative_squared_cross_mark: Error!')
+                .setTitle('<:FadBot_Cross:887607566060888094> Error!')
                 .setDescription('Hey you!\nYeah you!\nif you\'re seeing this message, it means that the bot owner did a stinky in writing the code thus you receiving an error after trying to run a commound. sorry bout that.')
                 .setColor(0xbb00ff)
                 
