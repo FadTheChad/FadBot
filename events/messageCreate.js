@@ -19,7 +19,7 @@ module.exports = {
         if (command.permissions) {
             let { permissions } = command
                 
-            if (permissions === 'BOT_DEV' && !devs.contains(message.author.id)) return
+            if ((permissions === 'BOT_DEV' || command.category === 'dev') && !devs.contains(message.author.id)) return
         
             if (typeof permissions === 'string') permissions = [permissions]
         
