@@ -4,7 +4,7 @@ const { prefix, devs } = config
 
 module.exports = {
     name: 'messageCreate',
-    run(message, client) {
+    run (message, client) {
         if (!message.content.startsWith(prefix) || message.author.bot) return
             
         const args = message.content.slice(prefix.length).trim().split(/ +/)
@@ -49,7 +49,7 @@ module.exports = {
             const errEmbed = new MessageEmbed()
                 .setTitle('<:FadBot_Cross:887607566060888094> Error!')
                 .setDescription('Hey you!\nYeah you!\nif you\'re seeing this message, it means that the bot owner did a stinky in writing the code thus you receiving an error after trying to run a commound. sorry bout that.')
-                .setColor(0xbb00ff)
+                .setColor(0x0000FF)
                 
             message.channel.send({embeds: [errEmbed]})
         }

@@ -11,7 +11,7 @@ const client = new Client({
         FLAGS.GUILD_MESSAGES,
         FLAGS.GUILD_MEMBERS
     ],
-    partials: ['MESSAGE', 'CHANNEL', 'REACTION']
+    partials: ['MESSAGE', 'CHANNEL', 'REACTION', 'GUILD_MEMBER']
 })
 
 // collection of our commands

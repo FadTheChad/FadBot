@@ -5,7 +5,7 @@ module.exports = {
     description: 'Ping!',
     aliases: ['test'],
     category: 'misc',
-    run(client, message, args) {
+    run (client, message, args) {
         message.channel.send('Pinging...')
             .then(m => {
                 const latency = m.createdTimestamp - message.createdTimestamp

@@ -7,7 +7,7 @@ module.exports = {
     usage: '<member> [reason]',
     category: 'moderation',
     permissions: 'BAN_MEMBERS',
-    async run(client, message, args) {
+    async run (client, message, args) {
         //the member that the user is trying to ban
         const target = message.mentions.members.first() || await message.guild.members.fetch(args[0])
         
