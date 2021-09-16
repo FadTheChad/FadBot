@@ -6,6 +6,7 @@ module.exports = {
     aliases: ['ch'],
     usage: '<-add | -delete> <channel name | channel ID>',
     category: 'utility',
+    permissions: ['MANAGE_CHANNELS'],
     async run (client, message, args) {
         switch (args[0]) {
             case '-add':
