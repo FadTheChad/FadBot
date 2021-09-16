@@ -1,5 +1,10 @@
 # Versions
 
+## v0.4.0 9/16/21
+- Added a test dev command and improved the dev check. Made it so that the help command does not show the dev commands.
+- Added a kick command
+- Added an new utility command category and a new utility command of >channel.
+
 ## v0.3.1 9/15/21 - 2
 - Accidently used the default emojis while i had my own special ones. Fixed.
 
