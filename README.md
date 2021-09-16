@@ -13,7 +13,7 @@ Here are some things that you can expect from the bot:
 
 * None of the main features of the bot will be put behind a paywall.
 * Might have some fun minigames that you could play with your friends!
-* Will implement some of the new features of the Discord API such as Context and Dropdown Menus, Buttons, Ephemeral Messages (and hopefully slash commands).
+* Will implement some of the new features of the Discord API such as Context and Dropdown Menus, Buttons, Ephemeral Messages (and hopefully slash commands and threads).
 
 ## Built With
 * [discord.js](https://github.com/discordjs/discord.js)
