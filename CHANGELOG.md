@@ -1,5 +1,12 @@
 # Versions
 
+## v0.5.0 9/17/21
+- added a avatar command
+- added a say command
+- added a github command
+- added a dev guilds command
+- fixed dev.js aliases
+
 ## v0.4.0 9/16/21
 - Added a test dev command and improved the dev check. Made it so that the help command does not show the dev commands.
 - Added a kick command
