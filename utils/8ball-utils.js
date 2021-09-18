@@ -10,5 +10,10 @@ module.exports.list = [
     'Perhaps not.',
     'Does 2 + 2 equals to 4?',
     'Eh *maybe*.',
-    'What why would you even think of such a thing.'
+    'What why would you even think of such a thing.',
+    'Of course!',
+    'Deadass.',
+    'Most Likely.',
+    'Less Likely.',
+    'Uhm not sure about that one lol.'
 ]
