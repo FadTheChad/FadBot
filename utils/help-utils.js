@@ -1,6 +1,5 @@
 const { MessageEmbed } = require('discord.js');
 const { prefix } = require('../config.json');
-const messageCreate = require('../events/messageCreate');
 
 module.exports = {
     sendFullHelp: (client, location) => {
@@ -21,7 +20,7 @@ module.exports = {
     },
 
     sendCommandOrCategoryHelp: (client, location, searchedCommand, authorId) => {
-        const cmdOrCat = client.commands.get(searchedCommand.toLowerCase()) || client.commands.find(cmd => cmd.aliases && cmd.aliases.includes(searchedCommand)) || client.categories.find(cat => cat.toLowerCase() === searchedCommand.toLowerCase())
+        const cmdOrCat = client.commands.get(searchedCommand.toLowerCase()) || client.commands.find(cmd => cmd.aliases && cmd.aliases.includes(searchedCommand.toLowerCase())) || client.categories.find(cat => cat.toLowerCase() === searchedCommand.toLowerCase())
 
         if (!cmdOrCat || cmdOrCat?.category == 'dev' || searchedCommand === 'dev') {
             const errEmbed = new MessageEmbed()
@@ -60,6 +59,38 @@ module.exports = {
 
             location.send({embeds: [embed]})
         }
+    },
+
+    sendFullDevHelp: (client, message) => {
+        const devCommands = client.commands.filter(c => c.category === 'dev')
+
+        let devEmbed = new MessageEmbed()
+            .setTitle('Dev Commands')
+            .setDescription(devCommands.map(devCmd => `\`${devCmd.name}\``).join(', '))
+            .setColor(0xFFFF00)
+        
+        
+        message.channel.send({embeds: [devEmbed]})
+    },
+
+    sendCommandDevHelp: (client, searchedDevCommand, message) => {
+        const devCommand = client.commands.get(searchedDevCommand.toLowerCase()) || client.commands.find(cmd => cmd.aliases && cmd.aliases.includes(searchedDevCommand.toLowerCase()))
+        
+        if (!devCommand) return message.reply('Nope not a real command.')
+        if (devCommand.category !== 'dev') return message.reply('Not a dev command lol')
+
+        const embed = new MessageEmbed()
+            .setTitle('Dev Command Found')
+            .setColor(0xFFFF00)
+        
+        if (devCommand.aliases) embed.addField('Aliases', devCommand.aliases.join(', '))
+        if (devCommand.category) embed.addField('Category', devCommand.category)
+        if (devCommand.description) embed.addField('Description', devCommand.description)
+        if (devCommand.usage) embed.addField('Usage', '`' + prefix + devCommand.name + ' ' + devCommand.usage + '`')
+
+        embed.addField('Permissions', devCommand.permissions ? (typeof devCommand.permissions === 'string' ? devCommand.permissions : devCommand.permissions.join(', ')) : 'Everyone')
+
+        message.channel.send({ embeds: [embed] })
     }
 }
 
