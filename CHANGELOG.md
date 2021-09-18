@@ -1,5 +1,15 @@
 # Versions
 
+## v0.6.0 9/18/21
+- added an 8ball command
+- added a new role utility command
+- added a devhelp command that shows the list of dev cmds
+- added a purge command
+- added a non-beginner friendly embed command. Gonna add a basic version later.
+- added a slowmode command
+- The help command for searching a specific cmd through an alias is now case insensitive.
+- The bot now has a presence on its profile.
+
 ## v0.5.0 9/17/21
 - added a avatar command
 - added a say command
