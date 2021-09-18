@@ -11,7 +11,13 @@ const client = new Client({
         FLAGS.GUILD_MESSAGES,
         FLAGS.GUILD_MEMBERS
     ],
-    partials: ['MESSAGE', 'CHANNEL', 'REACTION', 'GUILD_MEMBER']
+    partials: ['MESSAGE', 'CHANNEL', 'REACTION', 'GUILD_MEMBER'],
+    presence: {
+        activities: [{
+            name: 'Being Developed | >help For Help',
+            type: 'PLAYING'
+        }]
+    }
 })
 
 // collection of our commands
