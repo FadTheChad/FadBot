@@ -42,15 +42,16 @@ module.exports = {
         
         }
         try {
-            command.run(client, message, args);
+            command.run(client, message, args)
+            console.log(`\nCommand Ran!\nCommand: ${command.name}\nUser: ${message.author.username}\nGuild: ${message.guild ? message.guild.name : 'None'}\n`)
         } 
         catch (err) {
-            console.error(err);
+            console.error(`\nThere was an error running the command ${command.name}!\nError: ${err}`);
             
             // You don't realize how many times i see this embed everyday
             const errEmbed = fbEmbed(
                 'error',
-                'Error', 
+                'Error!', 
                 'Hey you!\nYeah you!\nif you\'re seeing this message, it means that the bot owner did a stinky in writing the code thus you receiving an error after trying to run a commound. sorry bout that.'
             )
                 
