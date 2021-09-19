@@ -1,4 +1,5 @@
 const { MessageEmbed } = require("discord.js")
+const { fbEmbed } = require("../../utils/fbEmbed-utils")
 
 module.exports = {
     name: 'embed',
@@ -14,11 +15,8 @@ module.exports = {
 
             message.channel.send({ embeds: [embed] })
         } catch (err) {
-            const errEmbed = new MessageEmbed()
-                .setTitle('<:FadBot_Cross:887607566060888094> Invalid JSON!')
-                .setDescription('Please use a valid json format!')
+            const errEmbed = fbEmbed('error', 'Invalid JSON!', 'Please use a valid json format!')
                 .addField('Error', `\`\`\`\n${err.toString()}\n\`\`\``)
-                .setColor(0x0000FF)
 
             message.channel.send({ embeds: [errEmbed] })
         }

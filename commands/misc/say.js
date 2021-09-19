@@ -1,4 +1,5 @@
 const { MessageEmbed } = require("discord.js")
+const { fbEmbed } = require("../../utils/fbEmbed-utils")
 
 module.exports = {
     name: 'say',
@@ -11,11 +12,12 @@ module.exports = {
         const said = args.join(' ')
 
         if (!said || !args[0]) {
-            const errEmbed = new MessageEmbed()
-                .setTitle('<:FadBot_Cross:887607566060888094> Message Not Specified!')
-                .setDescription('Please specify a message!')
-                .setColor(0x0000FF)
+            // const errEmbed = new MessageEmbed()
+            //     .setTitle('<:FadBot_Cross:887607566060888094> Message Not Specified!')
+            //     .setDescription('Please specify a message!')
+            //     .setColor(0x0000FF)
 
+            const errEmbed = fbEmbed('error', 'Message Not Specified!', 'Please specify a message!')
             return message.channel.send({embeds: [errEmbed]})
         }
 

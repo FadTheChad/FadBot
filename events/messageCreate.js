@@ -1,5 +1,6 @@
 const { MessageEmbed } = require('discord.js')
 const config = require('../config.json')
+const { fbEmbed } = require('../utils/fbEmbed-utils')
 const { prefix, devs } = config
 
 module.exports = {
@@ -45,11 +46,13 @@ module.exports = {
         } 
         catch (err) {
             console.error(err);
-                
-            const errEmbed = new MessageEmbed()
-                .setTitle('<:FadBot_Cross:887607566060888094> Error!')
-                .setDescription('Hey you!\nYeah you!\nif you\'re seeing this message, it means that the bot owner did a stinky in writing the code thus you receiving an error after trying to run a commound. sorry bout that.')
-                .setColor(0x0000FF)
+            
+            // You don't realize how many times i see this embed everyday
+            const errEmbed = fbEmbed(
+                'error',
+                'Error', 
+                'Hey you!\nYeah you!\nif you\'re seeing this message, it means that the bot owner did a stinky in writing the code thus you receiving an error after trying to run a commound. sorry bout that.'
+            )
                 
             message.channel.send({embeds: [errEmbed]})
         }

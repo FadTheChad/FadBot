@@ -1,4 +1,5 @@
 const { MessageEmbed } = require("discord.js")
+const { fbEmbed } = require("../../utils/fbEmbed-utils")
 
 module.exports = {
     name: 'purge',
@@ -10,9 +11,7 @@ module.exports = {
     async run (client, message, args) {
         const count = args[0]
 
-        let errEmbed = new MessageEmbed()
-            .setTitle('<:FadBot_Cross:887607566060888094> Purge Error!')
-            .setColor(0x0000FF)
+        let errEmbed = fbEmbed('error', 'Purge Error!')
 
         if (!count) {
             errEmbed.setDescription('Please specify how many messages to delete!')
@@ -32,10 +31,7 @@ module.exports = {
 
         // if you wanted to delete 1 message, it would delete the msg where you ran this command, hence we do +1
         message.channel.bulkDelete(parseInt(count) + 1).then(() => {
-            const embed = new MessageEmbed()
-                .setTitle('<:FadBot_Tick:887599870024761434> Purged Successfully!')
-                .setDescription(`Successfully purged ${count} message${count != 1 ? 's' : ''}!`)
-                .setColor(0xFFFF00)
+            const embed = fbEmbed('success', 'Purged Successfully!', `Successfully purged ${count} message${count != 1 ? 's' : ''}!`)
 
             message.channel.send({ embeds: [embed] }).then(msg => setTimeout(() => msg.delete(), 3000))
         })

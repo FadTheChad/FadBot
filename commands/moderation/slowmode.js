@@ -1,4 +1,5 @@
 const { MessageEmbed } = require("discord.js")
+const { fbEmbed } = require("../../utils/fbEmbed-utils")
 
 module.exports = {
     name: 'slowmode',
@@ -11,10 +12,8 @@ module.exports = {
         let amount = args[0]
 
         if (!amount) {
-            const embed = new MessageEmbed()
-                .setTitle('<:FadBot_Tick:887599870024761434> Slowmode Found!')
-                .addField('Current Slowmode', message.channel.rateLimitPerUser != 0 ? `\`${message.channel.rateLimitPerUser.toString()}\` seconds` : "None")
-                .setColor(0xFFFF00)
+            const embed = fbEmbed('success', 'Slowmode Found!')
+                .addField('Current Slowmode', message.channel.rateLimitPerUser != 0 ? `\`${message.channel.rateLimitPerUser.toString()}\` seconds` : 'None')
 
             message.channel.send({ embeds: [embed] })
         } else {
@@ -29,11 +28,9 @@ module.exports = {
                 return message.channel.send({ embeds: [errEmbed]})
             }
 
-            const embed = new MessageEmbed()
-                .setTitle('<:FadBot_Tick:887599870024761434> Slowmode Successfully Set!')
-                .addField('Initial Slowmode', message.channel.rateLimitPerUser != 0 ? `\`${message.channel.rateLimitPerUser.toString()}\` seconds` : "None")
+            const embed = fbEmbed('success', 'Slowmode Successfully Set!')
+                .addField('Initial Slowmode', message.channel.rateLimitPerUser != 0 ? `\`${message.channel.rateLimitPerUser.toString()}\` seconds` : 'None')
                 .addField('Final Slowmode', `\`${amount}\` seconds`)
-                .setColor(0xFFFF00)
 
             message.channel.setRateLimitPerUser(parseInt(amount)).then(() => message.channel.send({ embeds: [embed] }))
         }

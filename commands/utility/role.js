@@ -1,4 +1,5 @@
 const { MessageEmbed } = require("discord.js");
+const { fbEmbed } = require('../../utils/fbEmbed-utils')
 
 module.exports = {
     name: 'role',
@@ -8,9 +9,7 @@ module.exports = {
     category: 'utility',
     permissions: 'MANAGE_ROLES',
     async run (client, message, args) {
-        let errEmbed = new MessageEmbed()
-            .setTitle('<:FadBot_Cross:887607566060888094> Role Error!')
-            .setColor(0x0000FF)
+        let errEmbed = fbEmbed('error', 'Role Error!')
         
         switch (args[0]) {
             case '-create':
@@ -25,10 +24,7 @@ module.exports = {
                 message.guild.roles.create({
                     name: roleName
                 }).then(role => {
-                    const embed = new MessageEmbed()
-                        .setTitle('<:FadBot_Tick:887599870024761434> Role Created!')
-                        .setDescription(`Role <@&${role.id}> has been successfully created!`)
-                        .setColor(0xFFFF00)
+                    const embed = fbEmbed('success', 'Role Created!', `Role <@&${role.id}> has been successfully created!`)
 
                     message.channel.send({ embeds: [embed] })
                 })
@@ -44,10 +40,7 @@ module.exports = {
 
                 try {
                     role.delete().then(role => {
-                        const embed = new MessageEmbed()
-                            .setTitle('<:FadBot_Tick:887599870024761434> Role Deleted!')
-                            .setDescription(`Role \`${role.name}\` has been successfully deleted!`)
-                            .setColor(0xFFFF00)
+                        const embed = fbEmbed('success', 'Role Deleted!',`Role \`${role.name}\` has been successfully deleted!`)
 
                         message.channel.send({ embeds: [embed] })
                     })
@@ -75,10 +68,7 @@ module.exports = {
 
                 try {
                     memberToGiveTo.roles.add(roleToGive.id).then(member => {
-                        const embed = new MessageEmbed()
-                            .setTitle('<:FadBot_Tick:887599870024761434> Role Successfully Given!')
-                            .setDescription(`Role <@&${roleToGive.id}> has been successfully given to <@${member.id}>`)
-                            .setColor(0xFFFF00)
+                        const embed = fbEmbed('success', 'Role Successfully Given!', `Role <@&${roleToGive.id}> has been successfully given to <@${member.id}>`)
 
                         message.channel.send({ embeds: [embed] })
                     })
@@ -106,10 +96,7 @@ module.exports = {
 
                 try {
                     memberToTakeFrom.roles.remove(roleToTake.id).then(member => {
-                        const embed = new MessageEmbed()
-                            .setTitle('<:FadBot_Tick:887599870024761434> Role Successfully Taken!')
-                            .setDescription(`Role <@&${roleToTake.id}> has been successfully taken from <@${member.id}>`)
-                            .setColor(0xFFFF00)
+                        const embed = fbEmbed('success', 'Role Successfully Taken!', `Role <@&${roleToTake.id}> has been successfully taken from <@${member.id}>`)
 
                         message.channel.send({ embeds: [embed] })
                     })

@@ -1,4 +1,5 @@
 const { MessageEmbed } = require("discord.js")
+const { fbEmbed } = require("../../utils/fbEmbed-utils")
 
 module.exports = {
     name: 'avatar',
@@ -12,11 +13,8 @@ module.exports = {
         if (!args[0]) member = undefined
 
 
-        const embed = new MessageEmbed()
-            .setTitle('Avatar')
-            .setDescription(`Heres the avatar  <@${member ? member.id : message.author.id}> !`)
+        const embed = fbEmbed('success', 'Avatar Found!', `Heres the avatar  <@${member ? member.id : message.author.id}> !`)
             .setImage((member) ? (member.user.displayAvatarURL({ dynamic: true })) : (message.author.displayAvatarURL({ dynamic: true })))
-            .setColor(0xFFFF00)
 
         message.channel.send({ embeds: [embed] })
     }

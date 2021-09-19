@@ -1,4 +1,5 @@
 const { MessageEmbed } = require("discord.js")
+const { fbEmbed } = require("../../utils/fbEmbed-utils")
 
 module.exports = {
     name: 'ban',
@@ -20,13 +21,12 @@ module.exports = {
 
         const reason = args.slice(1).join(' ') || 'No reason specified'
 
-        const banEmbed = new MessageEmbed()
-            .setTitle('User Banned!')
+        const banEmbed = fbEmbed('success', 'User Banned!')
             .addField('Banned User', `target.user.tag (${target.id})`)
             .addField('Reason', reason)
             .setColor(0xFFFF00)
         
-        const banUserEmbed = new MessageEmbed()
+        const banUserEmbed =  new MessageEmbed()
             .setTitle('Banned!')
             .setDescription(`You have been banned from ${message.guild.name}!`)
             .addField('Reason', reason)

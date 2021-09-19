@@ -1,5 +1,6 @@
 const { MessageEmbed } = require('discord.js')
 const { list } = require('../../utils/8ball-utils')
+const { fbEmbed } = require('../../utils/fbEmbed-utils')
 
 module.exports = {
     name: '8ball',
@@ -9,10 +10,7 @@ module.exports = {
     category: 'misc',
     run (client, message, args) {
         if (!args[0]) {
-            const errEmbed = new MessageEmbed()
-                .setTitle('<:FadBot_Cross:887607566060888094> Question Not Given!')
-                .setDescription('Please specify a question for FadBot to answer!')
-                .setColor(0x0000FF)
+            const errEmbed = fbEmbed('error', 'Question Not Given!', 'Please specify a question for FadBot to answer!')
 
             return message.channel.send({ embeds: [errEmbed] })
         }

@@ -1,4 +1,5 @@
 const { MessageEmbed } = require("discord.js")
+const { fbEmbed } = require("../../utils/fbEmbed-utils")
 
 module.exports = {
     name: 'channel',
@@ -13,20 +14,15 @@ module.exports = {
                 const channelName = args.slice(1).join(' ')
                 
                 if (!channelName) {
-                    const errEmbed = new MessageEmbed()
-                        .setTitle('<:FadBot_Cross:887607566060888094> Channel Name Undefined!')
-                        .setDescription('Please a valid channel name')
-                        .setColor(0x0000FF)
+                    const errEmbed = fbEmbed('error', 'Channel Name Undefined!', 'Please specify a valid channel name!')
+
                     return message.channel.send({embeds: [errEmbed]})
                 }
 
                 message.guild.channels.create(channelName, {
                     parent: message.channel.parent
                 }).then((channel) => {
-                    const embed = new MessageEmbed()
-                        .setTitle('<:FadBot_Tick:887599870024761434> Channel Created!')
-                        .setDescription(`Channel <#${channel.id}> has been successfully created!`)
-                        .setColor(0xFFFF00)
+                    const embed = fbEmbed('success', 'Channel Created!', `Channel <#${channel.id}> has been successfully created!`)
 
                     return message.channel.send({embeds: [embed]})
                 })
@@ -35,28 +31,20 @@ module.exports = {
                 const channel = message.mentions.channels.first() || await message.guild.channels.fetch(args[1])
 
                 if (!channel || !args[1]) {
-                    const errEmbed = new MessageEmbed()
-                        .setTitle('<:FadBot_Cross:887607566060888094> Channel Not Found!')
-                        .setDescription('Please specify a valid channel mention or id')
-                        .setColor(0x0000FF)
+                    const errEmbed = fbEmbed('error', 'Channel Not Found!', 'Please specify a valid channel mention or id')
+                    
                     return message.channel.send({embeds: [errEmbed]})
                 }
 
-                const embed = new MessageEmbed()
-                    .setTitle('<:FadBot_Tick:887599870024761434> Channel Deleted!')
-                    .setDescription(`Channel \`${channel.name}\` has been successfully deleted!`)
-                    .setColor(0xFFFF00)
+                const embed = fbEmbed('success', 'Channel Deleted!', `Channel \`${channel.name}\` has been successfully deleted!`)
 
                 channel.delete().then(() => message.channel.send({embeds: [embed]}))
                 break
             default:
-                const errEmbed = new MessageEmbed()
-                        .setTitle('<:FadBot_Cross:887607566060888094> Invalid Flag!')
-                        .setDescription('Please use `-add` or `-delete` to use this command!')
-                        .setColor(0x0000FF)
+                const errEmbed = fbEmbed('error', 'Invalid Flag!', 'Please use `-add` or `-delete` to use this command!')
 
                 return message.channel.send({embeds: [errEmbed]})
                 break
-            }
+        }
     }
 }

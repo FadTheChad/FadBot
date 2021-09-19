@@ -1,4 +1,5 @@
 const { MessageEmbed } = require("discord.js")
+const { fbEmbed } = require("../../utils/fbEmbed-utils")
 
 module.exports = {
     name: 'kick',
@@ -19,11 +20,9 @@ module.exports = {
 
         const reason = args.slice(1).join(' ') || 'No reason specified'
 
-        const kickEmbed = new MessageEmbed()
-            .setTitle('User Kicked!')
+        const kickEmbed = fbEmbed('success', 'User Kicked!')
             .addField('Kicked User', `target.user.tag (${target.id})`)
             .addField('Reason', reason)
-            .setColor(0xFFFF00)
         
         const kickUserEmbed = new MessageEmbed()
             .setTitle('Kicked!')
