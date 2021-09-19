@@ -5,7 +5,7 @@ module.exports = {
     sendFullHelp: (client, location) => {
         const embed = new MessageEmbed()
             .setTitle("> FadBot Commands")
-            .setDescription(`To get info about a specific command, run \`${prefix}help <command>\`!`)
+            .setDescription(`To get info about a specific command or commands in a specific category, run \`${prefix}help <command | category>\`!`)
             .setColor(0xFFFF00)
         
         for (let cat of client.categories) {
