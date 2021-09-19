@@ -1,5 +1,11 @@
 # Versions
 
+## 0.7.0 9/19/21
+- Added an whole new fbEmbed system with types which is now implemented in almost every file which uses a success/error embed. Check `utils/fbEmbed-utils.js` for the system.
+- Now whenever a command file or an event file is loaded, it gets logged on the console.
+- Running a command now gives details in the console.
+- Improved the error message that gets logged on to a console whenever a command is note ran successfully.
+
 ## v0.6.0 9/18/21
 - added an 8ball command
 - added a new role utility command
