@@ -19,7 +19,7 @@ module.exports = {
         } else {
             if (amount.toLowerCase() === "none") amount = 0
             
-            if (isNaN(amount) || parseInt(amount) < 0) {
+            if (isNaN(amount) || parseInt(amount) < 0 || parseInt(amount) > 3600) {
                 const errEmbed = new MessageEmbed()
                     .setTitle('<:FadBot_Cross:887607566060888094> Invalid Amount!')
                     .setDescription('Please enter a valid slowmode between 1 to 3600!')
