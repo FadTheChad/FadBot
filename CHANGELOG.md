@@ -1,5 +1,13 @@
 # Versions
 
+## 0.8.0 9/20/21
+- Slash commands are here! (kinda)
+- Implemented the ability to use merged slash command and normal command by using different functions.
+- Added a demo ping command.
+- Added a in-construction dropdown help menu function but havent tested nor used it yet.
+- Fixed the perms check which caused moderation cmds to be evaded (very scary).
+- Added a max limit to the slowmode command.
+
 ## 0.7.0 9/19/21
 - Added an whole new fbEmbed system with types which is now implemented in almost every file which uses a success/error embed. Check `utils/fbEmbed-utils.js` for the system.
 - Now whenever a command file or an event file is loaded, it gets logged on the console.
