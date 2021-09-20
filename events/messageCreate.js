@@ -21,13 +21,11 @@ module.exports = {
             let { permissions } = command
                 
             if ((permissions === 'BOT_DEV' || command.category === 'dev') && !devs.includes(message.author.id)) return
-        
+            
             if (typeof permissions === 'string') permissions = [permissions]
         
-            for (const permission in permissions)  {
-                const permErrEmbed = new MessageEmbed()
-                    .setTitle('Invalid Permissions')
-                    .addField('Required Permissions', permissions.join(', '))
+            for (const permission of permissions)  {
+                const permErrEmbed = fbEmbed('error', 'Invalid Permissions!')
                 
                 if (!message.member.permissions.has(permission)) {
                     permErrEmbed.setDescription('You don\'t have perms to run this command!')
