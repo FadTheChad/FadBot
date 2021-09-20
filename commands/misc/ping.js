@@ -28,5 +28,21 @@ module.exports = {
                 
                 m.edit({content: null, embeds: [embed]})
             })
+    },
+    async slashRun(client, interaction) {
+        await interaction.deferReply()
+        
+        const initialInteraction = await interaction.editReply('Pinging...')
+                
+        const latency = initialInteraction.createdTimestamp - interaction.createdTimestamp
+        const apiLatency = Math.round(client.ws.ping)
+
+        const embed = fbEmbed('success', 'Pong!')
+            .addField('Latency', `\`${latency}\`ms`)
+            .addField('API Latency', `\`${apiLatency}\`ms`)
+            .setFooter(interaction.user.id)
+            .setTimestamp()
+                
+        await interaction.editReply({content: null, embeds: [embed]})
     }
 }
