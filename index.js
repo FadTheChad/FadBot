@@ -23,6 +23,9 @@ const client = new Client({
 // collection of our commands
 client.commands = new Collection()
 
+// yes discord i finally implemented slash commands now please let my family go
+client.slashCommands = new Collection()
+
 // collection of the command categories which are the folders in the commands folder
 client.categories = fs.readdirSync('./commands')
 

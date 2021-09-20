@@ -10,6 +10,8 @@
   "author": "Fad F",
   "license": "GNU GPLv3",
   "dependencies": {
+    "@discordjs/rest": "^0.1.0-canary.0",
+    "discord-api-types": "^0.23.1",
     "discord.js": "^13.1.0",
     "module-alias": "^2.2.2"
   },
