@@ -1,4 +1,5 @@
-const { MessageEmbed } = require('discord.js');
+const { MessageEmbed, MessageActionRow, MessageSelectMenu } = require('discord.js');
+const { category } = require('../commands/misc/say');
 const { prefix } = require('../config.json');
 
 module.exports = {
@@ -91,6 +92,34 @@ module.exports = {
         embed.addField('Permissions', devCommand.permissions ? (typeof devCommand.permissions === 'string' ? devCommand.permissions : devCommand.permissions.join(', ')) : 'Everyone')
 
         message.channel.send({ embeds: [embed] })
+    },
+
+    // no idea if this works. will test after i wake up lol
+    sendDropdownMenuHelp: (client, location) => {
+        const helpMenu = new MessageSelectMenu()
+
+        const helpOptions = []
+        for (category of client.categories) {
+            if (category == 'dev') continue
+
+            const commands = client.commands.filter(c => c.category == category)
+
+            helpOptions.push({
+                label: category.charAt(0).toUpperCase() + category.slice(1),
+                description: `List of the commands from the ${category} category`,
+                value: commands.map(c => `\`${c.name}\``).join(', ')
+            })
+        }
+        
+        const row = new MessageActionRow()
+            .addComponents(
+                helpMenu
+                    .setCustomId('Help Menu')
+                    .setPlaceholder('Select a Category')
+                    .addOptions(helpOptions)
+            )
+
+        location.send({ content: 'Here you go!', components: [row] })
     }
 }
 
