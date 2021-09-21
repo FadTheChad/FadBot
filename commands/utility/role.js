@@ -4,8 +4,8 @@ const { fbEmbed } = require('../../utils/fbEmbed-utils')
 module.exports = {
     name: 'role',
     description: 'creates/deletes/adds/takes a role',
-    aliases: 'rl',
-    usage: ' 1. <-create | -delete> <role>\n2. <-give | -take> [member]',
+    aliases: ['rl'],
+    usage: '\n1. <-create | -delete> <role>\n2. <-give | -take> [member]',
     category: 'utility',
     permissions: 'MANAGE_ROLES',
     async run (client, message, args) {
