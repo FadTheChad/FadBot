@@ -1,5 +1,13 @@
 # Versions
 
+## 0.9.0 9/21/21
+- Advanced Help command is here with flags and dropdown menus!
+- Added a roll command
+- Added a serverinfo command which is extremely slow
+- Improved the aliases system in `messageCreate.js`.
+- Added a perms check in `interactionCreate.js`
+- Added a test /dev command
+
 ## 0.8.0 9/20/21
 - Slash commands are here! (kinda)
 - Implemented the ability to use merged slash command and normal command by using different functions.
