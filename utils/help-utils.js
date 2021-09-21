@@ -1,6 +1,7 @@
 const { MessageEmbed, MessageActionRow, MessageSelectMenu } = require('discord.js');
 const { category } = require('../commands/misc/say');
 const { prefix } = require('../config.json');
+const { fbEmbed } = require('./fbEmbed-utils');
 
 module.exports = {
     sendFullHelp: (client, location) => {
@@ -95,19 +96,17 @@ module.exports = {
     },
 
     // no idea if this works. will test after i wake up lol
-    sendDropdownMenuHelp: (client, location) => {
+    sendDropdownMenuHelp: async (client, location, author, isSlash) => {
         const helpMenu = new MessageSelectMenu()
 
         const helpOptions = []
-        for (category of client.categories) {
+        for (const category of client.categories) {
             if (category == 'dev') continue
-
-            const commands = client.commands.filter(c => c.category == category)
 
             helpOptions.push({
                 label: category.charAt(0).toUpperCase() + category.slice(1),
                 description: `List of the commands from the ${category} category`,
-                value: commands.map(c => `\`${c.name}\``).join(', ')
+                value: category
             })
         }
         
@@ -119,7 +118,24 @@ module.exports = {
                     .addOptions(helpOptions)
             )
 
-        location.send({ content: 'Here you go!', components: [row] })
+        initialMessage = await location.send({ embeds: [fbEmbed('success', 'Categories Loaded!')], components: [row] })
+
+        let filter = (interaction) => {
+            interaction.deferUpdate()
+            return author.id === interaction.user.id
+        }
+
+        const collector = location.awaitMessageComponent({
+            filter,
+            time: 20000,
+            componentType: 'SELECT_MENU'
+        }).then(i => {
+            const [category] = i.values
+            const ddEmbed = fbEmbed('success', `${category.charAt(0).toUpperCase() + category.slice(1)} Commands`, client.commands.filter(c => c.category == category).map(c => `\`${c.name}\``).join(', '))
+
+            isSlash ? initialMessage.editReply({ embeds: [ddEmbed] }) : initialMessage.edit({ embeds: [ddEmbed] })
+        })
+            .catch(err => console.log(err))
     }
 }
 
