@@ -12,7 +12,7 @@ module.exports = {
         const commandName = args.shift().toLowerCase()
         
         // get the command through the command name, or one of the aliases of the command
-        const command = client.commands.get(commandName) || client.commands.find(cmd => cmd.aliases && cmd.aliases.includes(commandName))
+        const command = client.commands.get(commandName) || client.commands.find(cmd => cmd.aliases && (typeof cmd.aliases === 'string' ? commandName === cmd.aliases : cmd.aliases.includes(commandName)))
         
         //if the command does not exist, we can simply ignore
         if (!command) return
