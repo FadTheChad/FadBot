@@ -6,5 +6,8 @@ module.exports = {
     permissions: 'BOT_DEV',
     run (client, message, args) {
         message.reply('is dev')
+    },
+    async slashRun (client, interaction) {
+        interaction.reply('is dev')
     }
 }
