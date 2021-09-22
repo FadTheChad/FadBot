@@ -1,5 +1,9 @@
 # Versions
 
+## 0.9.1 9/22/21
+- Fixed >ban and >kick where a invalid member was defined and bot did not seem to catch.
+- Fixed indentation in >serverinfo.
+
 ## 0.9.0 9/21/21
 - Advanced Help command is here with flags and dropdown menus!
 - Added a roll command
