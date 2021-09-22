@@ -26,6 +26,9 @@ Here are some things that you can expect from the bot:
 
 See `CHANGELOG.md` for all changes
 
+## Trello
+If you want to see some of the ideas/features that the bot could get, check out our [Trello Page](https://trello.com/b/4qiwoazB/fadbot-board)!
+
 # Get Started
 
 ## Requirements
