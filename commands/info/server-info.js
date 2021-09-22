@@ -21,15 +21,11 @@ module.exports = {
             .addField('Server ID', message.guild.id, true)
             .addField(
                 'Member Count', 
-                `Total: ${botMembers.size + userMembers.size}\n
-                Users: ${userMembers.size}\n
-                Bots: ${botMembers.size}`
+                `Total: ${botMembers.size + userMembers.size}\nUsers: ${userMembers.size}\nBots: ${botMembers.size}`
             )
             .addField(
-                'Channel Count',
-                `Text Channels: ${textChannels.size}\n
-                Category Channels: ${categoryChannels.size}\n
-                Voice Channels: ${voiceChannels.size}`, true
+                'Channel Count', 
+                `Text Channels: ${textChannels.size}\nCategory Channels: ${categoryChannels.size}\nVoice Channels: ${voiceChannels.size}`, true
             )
             .addField('Emojis', emojis.size.toString())
             .addField('Roles', roles.size.toString())
