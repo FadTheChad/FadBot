@@ -9,7 +9,7 @@ module.exports = {
     permissions: 'KICK_MEMBERS',
     async run (client, message, args) {
         //the member that the user is trying to kick
-        const target = message.mentions.members.first() || await message.guild.members.fetch(args[0])
+        const target = message.mentions.members.first() || await message.guild.members.fetch(args[0]).catch(e => { const target = undefined })
         
         //if the target is not found
         if (!target || !args[0]) return message.channel.send('Please provide a valid user to kick')
