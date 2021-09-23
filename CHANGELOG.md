@@ -1,5 +1,13 @@
 # Versions
 
+## 0.10.0 9/23/21
+- Advanced ban cmd is here with a optional timer now!
+- Added a unban command
+- Added a mute command
+- Added JSDoc to the fbEmbed system
+- Removed useless fetching of roles, channels, and emojis and used cache instead since they are already cached.
+- Something special in index.js ;)
+
 ## 0.9.1 9/22/21
 - Fixed >ban and >kick where a invalid member was defined and bot did not seem to catch.
 - Fixed indentation in >serverinfo.
