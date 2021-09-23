@@ -1,6 +1,13 @@
 const { MessageEmbed } = require("discord.js")
 
 module.exports = {
+    /** 
+     * A custom MessageEmbed function for FadBot
+     * @param {string} [type] - The type of embed (success | error)
+     * @param {string} title - The embed's title
+     * @param {string} [description] - The embed's description
+     * @returns {object} - The MessageEmbed
+    */
     fbEmbed: (type, title, description) => {
         const embed = new MessageEmbed()
 
