@@ -28,7 +28,7 @@ module.exports = {
                 })
                 break
             case '-delete':
-                const channel = message.mentions.channels.first() || await message.guild.channels.fetch(args[1])
+                const channel = message.mentions.channels.first() || message.guild.channels.cache.get(args[1])
 
                 if (!channel || !args[1]) {
                     const errEmbed = fbEmbed('error', 'Channel Not Found!', 'Please specify a valid channel mention or id')

@@ -30,7 +30,7 @@ module.exports = {
                 })
                 break;
             case '-delete':
-                const role = message.mentions.roles.first() || await message.guild.roles.fetch(args[1])
+                const role = message.mentions.roles.first() || message.guild.roles.cache.get(args[1])
             
                 if (!args[1] || !role) {
                     errEmbed.setDescription('Please specify a valid role mention or role id!')
@@ -51,7 +51,7 @@ module.exports = {
                 }
                 break
             case '-give':
-                const roleToGive = message.mentions.roles.first() || await message.guild.roles.fetch(args[1])
+                const roleToGive = message.mentions.roles.first() || message.guild.roles.cache.get(args[1])
                 const memberToGiveTo = message.mentions.members.first() || await message.guild.members.fetch(args[2])
 
                 if ((!roleToGive || !args[1]) || (!memberToGiveTo || !args[2])) {
@@ -79,7 +79,7 @@ module.exports = {
                 }
                 break
             case '-take':
-                const roleToTake = message.mentions.roles.first() || await message.guild.roles.fetch(args[1])
+                const roleToTake = message.mentions.roles.first() || message.guild.roles.cache.get(args[1])
                 const memberToTakeFrom = message.mentions.members.first() || await message.guild.members.fetch(args[2])
 
                 if ((!roleToTake || !args[1]) || (!memberToTakeFrom || !args[2])) {
