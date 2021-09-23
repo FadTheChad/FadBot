@@ -31,7 +31,7 @@ client.categories = fs.readdirSync('./commands')
 
 // loads the commands
 for (const folder of client.categories) {
-    const commandFiles = fs.readdirSync(`./commands/${folder}`).filter(file => file.endsWith('js'))
+    const commandFiles = fs.readdirSync(`./commands/${folder}`).filter(file => file.endsWith('js') || file.endsWith('ts')) // <= what could this possibly mean!?!?!?!
     console.log(`\nSearching ${folder} commands...\n`)
     for (const file of commandFiles) {
         const command = require(`./commands/${folder}/${file}`)
