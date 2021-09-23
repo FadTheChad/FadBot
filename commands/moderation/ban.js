@@ -64,6 +64,8 @@ module.exports = {
                     message.guild.members.unban(targetId)
                         .then(() => {
                             const unBanEmbed = fbEmbed('success', 'Unbanned!', `You have been unbanned from ${message.guild.name}`)
+
+                            found.send({ embeds: [unBanEmbed] }).catch(e => console.log('cannot DM user'))
                         })
                 }
             }, time)
