@@ -47,7 +47,7 @@ module.exports = {
 
         const targetId = target.id
 
-        target.send({ embeds: [banUserEmbed] }).catch(err => {
+        target.user.send({ embeds: [banUserEmbed] }).catch(err => {
             console.log('Oop can\'t DM this user')
         })
         
@@ -65,7 +65,7 @@ module.exports = {
                         .then(() => {
                             const unBanEmbed = fbEmbed('success', 'Unbanned!', `You have been unbanned from ${message.guild.name}`)
 
-                            found.send({ embeds: [unBanEmbed] }).catch(e => console.log('cannot DM user'))
+                            found.user.send({ embeds: [unBanEmbed] }).catch(e => console.log('cannot DM user'))
                         })
                 }
             }, time)

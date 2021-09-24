@@ -59,7 +59,7 @@ module.exports = {
             setTimeout(() => {
                 if (target.roles.cache.get(mutedRole.id)) {
                     target.roles.remove(mutedRole).then(() => {
-                        target.send({ embeds: [muteUserEmbed]})
+                        target.user.send({ embeds: [muteUserEmbed]})
                             .catch(e => console.log('Cannot DM this user'))
                     }).catch(e => console.log('cannot unmute this member'))
 
