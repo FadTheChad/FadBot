@@ -66,6 +66,11 @@ Contributions are what make the open source community such an amazing place to l
 
 1. Open a pull request. We will review the changes (and hopefully merge it!).
 
+Check out `.github/CONTRIBUTING.md` before doing the above!
+
+# Code Of Conduct
+We expect you to be respectful with each other and create a happy environment! See `.github/CODE_OF_CONDUCT.md` for more details!
+
 # License
 Distributed under the `GNU GPLv3` License. See `LICENSE.txt` for more information.
 
