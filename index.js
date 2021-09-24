@@ -30,28 +30,12 @@ client.slashCommands = new Collection()
 client.categories = fs.readdirSync('./commands')
 
 // loads the commands
-for (const folder of client.categories) {
-    const commandFiles = fs.readdirSync(`./commands/${folder}`).filter(file => file.endsWith('js') || file.endsWith('ts')) // <= what could this possibly mean!?!?!?!
-    console.log(`\nSearching ${folder} commands...\n`)
-    for (const file of commandFiles) {
-        const command = require(`./commands/${folder}/${file}`)
-        client.commands.set(command.name, command)
-        console.log(`\t${file} has been loaded!`)
-    }
-}
+require('./handlers/command')(client)
 
-// collection of the event files in the 'events' folder
-const eventFiles = fs.readdirSync('./events').filter(file => file.endsWith('.js'))
-console.log('\nLoading events...\n')
+// loads the slash commands
+require('./handlers/slashCommand')(client, false)
+
 // loads the events
-for (const file of eventFiles) {
-	const event = require(`./events/${file}`)
-    console.log(`\t ${event.name} event has been loaded!`)
-	if (event.once) {
-		client.once(event.name, (...args) => event.run(...args, client))
-	} else {
-		client.on(event.name, (...args) => event.run(...args, client))
-	}
-}
+require('./handlers/event')(client)
 
 client.login(config.token)
