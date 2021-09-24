@@ -57,6 +57,5 @@ module.exports = {
                 
             message.channel.send({embeds: [errEmbed]})
         }
-        
     }   
 }
