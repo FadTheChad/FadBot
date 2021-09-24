@@ -46,5 +46,27 @@ module.exports = {
                 interaction.reply({ embeds: [errEmbed], ephemeral: true })
             }
         }
+
+        if (interaction.isContextMenu()) {
+            const contextMenu = client.slashCommands.get(interaction.commandName)
+
+            if (!contextMenu) return
+
+            console.log(contextMenu.type)
+
+            try {
+                await contextMenu.contextRun(client, interaction)
+            } catch (err) {
+                console.error(err)
+
+                const errEmbed = fbEmbed(
+                    'error',
+                    'Error!', 
+                    'Hey you!\nYeah you!\nif you\'re seeing this message, it means that the bot owner did a stinky in writing the code thus you receiving an error after trying to run a commound. sorry bout that.'
+                )
+                    
+                interaction.reply({ embeds: [errEmbed], ephemeral: true })
+            }
+        }
     }
 }
