@@ -9,7 +9,8 @@ const client = new Client({
         FLAGS.DIRECT_MESSAGES,
         FLAGS.GUILDS,
         FLAGS.GUILD_MESSAGES,
-        FLAGS.GUILD_MEMBERS
+        FLAGS.GUILD_MEMBERS,
+        FLAGS.GUILD_PRESENCES
     ],
     partials: ['MESSAGE', 'CHANNEL', 'REACTION', 'GUILD_MEMBER'],
     presence: {
