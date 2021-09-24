@@ -5,7 +5,7 @@ module.exports = {
     name: 'avatar',
     description: 'Displays the avatar of the specified user.',
     aliases: ['av', 'pfp'],
-    usages: '[member mention | id]',
+    usage: '[member mention | id]',
     category: 'info',
     async run (client, message, args) {
         let member = message.mentions.members.first() || message.guild.members.fetch(args[0])
