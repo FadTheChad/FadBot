@@ -6,6 +6,8 @@ const { prefix, devs } = config
 module.exports = {
     name: 'messageCreate',
     run (message, client) {
+        if (message.content.match(new RegExp('^<@!?' + client.user.id + '>'))) return message.reply(`My prefix is \`${prefix}\``)
+        
         if (!message.content.startsWith(prefix) || message.author.bot) return
             
         const args = message.content.slice(prefix.length).trim().split(/ +/)
