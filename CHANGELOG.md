@@ -1,5 +1,15 @@
 # Versions
 
+## 0.11.0 9/24/21
+- The Bot Handlers are now in a seperate folder.
+- Added a demo ContextMenu check in `interactionCreate.js`. 
+- Added a unmute command
+- Added a userinfo command
+- Deploy command also uses the new Handler now.
+- Bot now replies if you start your message with pinging it.
+- Fixed usage in avatar command.
+- Fixed the DMing code in ban and mute command.
+
 ## 0.10.0 9/23/21
 - Advanced ban cmd is here with a optional timer now!
 - Added a unban command
