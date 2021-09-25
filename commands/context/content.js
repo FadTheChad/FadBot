@@ -1,5 +1,5 @@
 module.exports = {
-    name: 'content',
+    name: 'ctx-content',
     type: 3,
     async contextRun(client, interaction) {
         const msg = await interaction.channel.messages.fetch(interaction.targetId)
