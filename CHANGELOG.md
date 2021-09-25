@@ -1,5 +1,12 @@
 # Versions
 
+# 0.12.0 9/25/21
+- Context Menus handler has been fully set up and ready for use!
+- Added a ctx-content command
+- Added a ctx-avatar command
+- Fixed help cmd
+- `messageCreate.js` had a weird whitespace so removed that to make the code look more clean.
+
 ## 0.11.0 9/24/21
 - The Bot Handlers are now in a seperate folder.
 - Added a demo ContextMenu check in `interactionCreate.js`. 
