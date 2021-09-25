@@ -44,7 +44,7 @@ module.exports = {
         try {
             command.run(client, message, args)
             console.log(`\nCommand Ran!\nCommand: ${command.name}\nUser: ${message.author.username}\nGuild: ${message.guild ? message.guild.name : 'None'}\n`)
-        } 
+        }
         catch (err) {
             console.error(`\nThere was an error running the command ${command.name}!\nError: ${err}`);
             
