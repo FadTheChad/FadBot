@@ -52,8 +52,6 @@ module.exports = {
 
             if (!contextMenu) return
 
-            console.log(contextMenu.type)
-
             try {
                 await contextMenu.contextRun(client, interaction)
             } catch (err) {
