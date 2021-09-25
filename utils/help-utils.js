@@ -11,7 +11,7 @@ module.exports = {
             .setColor(0xFFFF00)
         
         for (let cat of client.categories) {
-            if (cat === 'dev') continue
+            if (cat === 'dev' || cat === 'context') continue
             
             const commands = client.commands.filter(c => c.category == cat);
 
@@ -24,7 +24,7 @@ module.exports = {
     sendCommandOrCategoryHelp: (client, location, searchedCommand, authorId) => {
         const cmdOrCat = client.commands.get(searchedCommand.toLowerCase()) || client.commands.find(cmd => cmd.aliases && cmd.aliases.includes(searchedCommand.toLowerCase())) || client.categories.find(cat => cat.toLowerCase() === searchedCommand.toLowerCase())
 
-        if (!cmdOrCat || cmdOrCat?.category == 'dev' || searchedCommand === 'dev') {
+        if (!cmdOrCat || cmdOrCat?.category == 'dev' || searchedCommand.toLowerCase() === 'dev' || searchedCommand.toLowerCase() === 'context') {
             const errEmbed = new MessageEmbed()
                 .setTitle('Command/Category Not Found')
                 .setDescription('That command/category doesn\'t seem to exist. run `' + prefix + 'help` for a whole list of commands and categories!')
