@@ -34,11 +34,8 @@ module.exports = {
             .addField('Reason', reason)
             .setColor(0xFFFF00)
         
-        const banUserEmbed =  new MessageEmbed()
-            .setTitle('Banned!')
-            .setDescription(`You have been banned from ${message.guild.name}!`)
+        const banUserEmbed =  fbEmbed('error', 'Banned!', `You have been banned from ${message.guild.name}!`)
             .addField('Reason', reason)
-            .setColor(0xFFFF00)
 
         if (!isNaN(time)) {
             banEmbed.addField('Duration', `${ms(time)}`)
