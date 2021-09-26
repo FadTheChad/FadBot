@@ -8,6 +8,7 @@
 
 # About The Project
 ![Logo](./public/logo.png)
+
 FadBot is a multipurpose and open-source discord bot currently being developed using javascript. Currently at the time of `v0.x.x` it doesn't really do much, but i will try my best to frequently add more features.
 
 Here are some things that you can expect from the bot:
