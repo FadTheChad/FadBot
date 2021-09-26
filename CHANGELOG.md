@@ -1,5 +1,10 @@
 # Versions
 
+# 12.0.1 9/26/21
+- Made ban command use fbEmbed wherever it was easily usable.
+- Added a publics folder with the bot's logo.
+- Formatted code og `botinfo.js`.
+
 # 0.12.0 9/25/21
 - Context Menus handler has been fully set up and ready for use!
 - Added a ctx-content command
