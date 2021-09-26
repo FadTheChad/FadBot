@@ -18,6 +18,6 @@ module.exports = {
             .addField('Support Server', '[Join our Official Support Server!](https://discord.gg/3tEGymY5pE)', true)
             .setImage(client.user.avatarURL({dynamic: true}))
 
-        message.channel.send({embeds: [embed]})
+        message.channel.send({ embeds: [embed] })
     }
 }
