@@ -33,6 +33,12 @@ module.exports = {
         })
         
         target.kick({ reason })
-            .then(() => message.channel.send({ embeds: [kickEmbed] }))
-    }
+            .then(() => {
+                message.channel.send({ embeds: [kickEmbed] })
+                    .catch(e => console.log('Cannot DM user'))
+            })
+            .catch(e => {
+                return message.channel.send({ embeds: [fbEmbed('error', 'Unable to kick user!', 'Might be because of member having higher permissions!')] })
+            })
+        }
 }

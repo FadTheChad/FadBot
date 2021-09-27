@@ -51,7 +51,9 @@ module.exports = {
         target.ban()
             .then(() => {
                 message.channel.send({ embeds: [banEmbed] })
-            }).catch('Cant ban user')
+            }).catch(e => {
+                return message.channel.send({ embeds: [fbEmbed('error', 'Unable to ban user!', 'Might be because of member having higher permissions!')] })
+            })
 
         if (!isNaN(time)) {
             setTimeout(async () => {
@@ -64,6 +66,7 @@ module.exports = {
 
                             found.user.send({ embeds: [unBanEmbed] }).catch(e => console.log('cannot DM user'))
                         })
+                        .catch(e => console.log('Unable to unban user'))
                 }
             }, time)
         }
