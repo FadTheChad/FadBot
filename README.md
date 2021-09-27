@@ -62,6 +62,8 @@ Node `v16.6+` is required. You can install it at their [official site](https://n
 # Contributing
 Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are greatly appreciated.
 
+## Pull Requests
+
 1. Fork the Project.
 
 1. Create your Feature Branch (`git checkout -b feature/AmazingFeature`).
@@ -73,6 +75,10 @@ Contributions are what make the open source community such an amazing place to l
 1. Open a pull request. We will review the changes (and hopefully merge it!).
 
 Check out [`CONTRIBUTING.md`](https://github.com/FadTheChad/FadBot/blob/main/.github/CONTRIBUTING.md) before doing the above!
+
+## Issues
+Have a feature idea? Want to report a bug? Simply create an issue and we will try to see what we can do!
+Make sure to check both of our [Issue Templates](https://github.com/FadTheChad/FadBot/tree/main/.github/ISSUE_TEMPLATE) before you send one!
 
 # Code Of Conduct
 We expect you to be respectful with each other and create a happy environment! See [`CODE_OF_CONDUCT.md`](https://github.com/FadTheChad/FadBot/blob/main/.github/CODE_OF_CONDUCT.md) for more details!
