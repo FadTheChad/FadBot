@@ -1,6 +1,10 @@
 # Versions
 
-# 12.0.1 9/26/21
+# 0.12.2 9/27/21
+- Ban, kick, mute, unban, and unmute now have better error handling
+- Made the above commands use fbEmbed more where they did not.
+
+# 0.12.1 9/26/21
 - Made ban command use fbEmbed wherever it was easily usable.
 - Added a publics folder with the bot's logo.
 - Formatted code og `botinfo.js`.
