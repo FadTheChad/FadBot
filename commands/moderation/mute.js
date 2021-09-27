@@ -53,7 +53,9 @@ module.exports = {
 
         target.roles.add(mutedRole, reason)
             .then(() => message.channel.send({ embeds: [muteEmbed] }))
-            .catch(e => console.log('cannot mute this member'))
+            .catch(e => {
+                return message.channel.send({ embeds: [fbEmbed('error', 'Unable to mute user!', 'Might be because of member having higher permissions!')] })
+            })
 
         if (!isNaN(time)) {
             setTimeout(() => {
