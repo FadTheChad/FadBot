@@ -72,7 +72,7 @@ Contributions are what make the open source community such an amazing place to l
 
 1. Open a pull request. We will review the changes (and hopefully merge it!).
 
-Check out `.github/CONTRIBUTING.md` before doing the above!
+Check out [`CONTRIBUTING.md`](https://github.com/FadTheChad/FadBot/blob/main/.github/CONTRIBUTING.md) before doing the above!
 
 # Code Of Conduct
 We expect you to be respectful with each other and create a happy environment! See `.github/CODE_OF_CONDUCT.md` for more details!
