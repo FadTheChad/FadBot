@@ -78,7 +78,7 @@ Check out `.github/CONTRIBUTING.md` before doing the above!
 We expect you to be respectful with each other and create a happy environment! See `.github/CODE_OF_CONDUCT.md` for more details!
 
 # License
-Distributed under the `GNU GPLv3` License. See `LICENSE.txt` for more information.
+Distributed under the `GNU GPLv3` License. See [`LICENSE.txt`](https://github.com/FadTheChad/FadBot/blob/main/LICENSE.txt) for more information.
 
 # Contact
 Our Support Discord Server: https://discord.gg/3tEGymY5pE
