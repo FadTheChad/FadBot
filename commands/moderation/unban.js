@@ -34,6 +34,8 @@ module.exports = {
                 message.channel.send({ embeds: [unBanEmbed] })
                 bannedUser.user.send({ embeds: [unBanUserEmbed] }).catch(e => console.log('Cannot DM user'))
             })
-            .catch(e => console.log(e))
+            .catch(e => {
+                return message.channel.send({ embeds: [fbEmbed('error', 'Unable to unban user!', 'The bot is unable to unban this user!')] })
+            })
     }
 }

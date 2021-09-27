@@ -33,6 +33,8 @@ module.exports = {
 
                 member.user.send({ embeds: [unmutedUserEmbed] }).catch(e => console.log('Cannot DM User'))
             })
-            .catch(e => console.log('Cannot unmute user'))
+            .catch(e => {
+                return message.channel.send({ embeds: [fbEmbed('error', 'Unable to unmute user!', 'The bot is unable to unmute this user!')] })
+            })
     }
 }
