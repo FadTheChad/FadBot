@@ -24,13 +24,10 @@ module.exports = {
             .addField('Kicked User', `target.user.tag (${target.id})`)
             .addField('Reason', reason)
         
-        const kickUserEmbed = new MessageEmbed()
-            .setTitle('Kicked!')
-            .setDescription(`You have been kicked from ${message.guild.name}!`)
+        const kickUserEmbed = fbEmbed('error', 'Kicked!', `You have been kicked from ${message.guild.name}!`)
             .addField('Reason', reason)
             .setColor(0xFFFF00)
 
-        
         target.send({ embeds: [kickUserEmbed]}).catch(err => {
             console.log(err)
         })
