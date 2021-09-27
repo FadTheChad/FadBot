@@ -75,7 +75,7 @@ Contributions are what make the open source community such an amazing place to l
 Check out [`CONTRIBUTING.md`](https://github.com/FadTheChad/FadBot/blob/main/.github/CONTRIBUTING.md) before doing the above!
 
 # Code Of Conduct
-We expect you to be respectful with each other and create a happy environment! See `.github/CODE_OF_CONDUCT.md` for more details!
+We expect you to be respectful with each other and create a happy environment! See [`CODE_OF_CONDUCT.md`](https://github.com/FadTheChad/FadBot/blob/main/.github/CODE_OF_CONDUCT.md) for more details!
 
 # License
 Distributed under the `GNU GPLv3` License. See [`LICENSE.txt`](https://github.com/FadTheChad/FadBot/blob/main/LICENSE.txt) for more information.
