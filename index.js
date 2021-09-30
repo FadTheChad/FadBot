@@ -1,6 +1,7 @@
 const { Client, Intents, Collection } = require('discord.js')
 const { FLAGS } = Intents
 const fs = require('fs')
+const mongoose = require('mongoose')
 const config = require('./config.json')
 
 
@@ -38,5 +39,14 @@ require('./handlers/slashCommand')(client, false)
 
 // loads the events
 require('./handlers/event')(client)
+
+mongoose.connect(config.mongoURI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+}).then(() => {
+    console.log('Connected to MongoDB!')
+}).catch(e => {
+    console.log(`Could not connect to MongoDB!\nError: ${e}`)
+})
 
 client.login(config.token)
