@@ -1,5 +1,9 @@
 # Versions
 
+# 0.13.0
+- MongoDB is here!
+- Added a >welcomechannel cmd
+
 # 0.12.2 9/27/21
 - Ban, kick, mute, unban, and unmute now have better error handling
 - Made the above commands use fbEmbed more where they did not.
