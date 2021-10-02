@@ -1,5 +1,10 @@
 # Versions
 
+# 0.14.0
+- FadBot is now being developed in JetBrains WebStorm. Very pog.
+- Muted role can now be manually set through db!
+- Added a >leave cmd similar to >welcomechannel cmd.
+
 # 0.13.0
 - MongoDB is here!
 - Added a >welcomechannel cmd
