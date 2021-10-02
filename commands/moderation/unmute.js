@@ -1,4 +1,5 @@
 const { fbEmbed } = require("../../utils/fbEmbed-utils")
+const { getMutedRole } = require("../../utils/db/muted-role-utils");
 
 module.exports = {
     name: 'unmute',
@@ -16,7 +17,7 @@ module.exports = {
             return message.channel.send({ embeds: [errEmbed]})
         }
 
-        const mutedRole = message.guild.roles.cache.find(r => r.name.toLowerCase() === 'muted')
+        const mutedRole = await getMutedRole(message.guild.id)
 
         if (!member.roles.cache.get(mutedRole.id)) {
             const errEmbed = fbEmbed('error', 'Member Not Muted!', 'This member is not muted!')
