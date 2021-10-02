@@ -9,13 +9,13 @@
 # About The Project
 ![Logo](./public/logo.png)
 
-FadBot is a multipurpose and open-source discord bot currently being developed using javascript. Currently at the time of `v0.x.x` it doesn't really do much, but i will try my best to frequently add more features.
+FadBot is a multipurpose and open-source discord bot currently being developed using javascript. Currently, at the time of `v0.x.x` it doesn't really do much, but I will try my best to frequently add more features.
 
 Here are some things that you can expect from the bot:
 
 * None of the main features of the bot will be put behind a paywall.
 * Might have some fun minigames that you could play with your friends!
-* Will implement some of the new features of the Discord API such as Context and Dropdown Menus, Buttons, Ephemeral Messages (and hopefully slash commands and threads).
+* Will implement some new features of the Discord API such as Context and Dropdown Menus, Buttons, Ephemeral Messages (and hopefully slash commands and threads).
 
 ## Built With
 * [discord.js](https://github.com/discordjs/discord.js)
@@ -29,7 +29,7 @@ Here are some things that you can expect from the bot:
 See `CHANGELOG.md` for all changes
 
 ## Trello
-If you want to see some of the ideas/features that the bot could get, check out our [Trello Page](https://trello.com/b/4qiwoazB/fadbot-board)!
+If you want to see some ideas/features that the bot could get, check out our [Trello Page](https://trello.com/b/4qiwoazB/fadbot-board)!
 
 # Get Started
 
@@ -53,10 +53,10 @@ Node `v16.6+` is required. You can install it at their [official site](https://n
     "clientId": "Your Client ID Here",
     "guildId": "Your Guild ID Here"
     ```
-   - `token` is the Bot's Token. You can recieve it from Discord's Developer Portal.
+   - `token` is the Bot's Token. You can receive it from Discord's Developer Portal.
    - `prefix` is the bot's prefix.
-   - `devs` stores the ID of discord users that can run secret dev commands. You can add as many devs as you want but its recommended to keep it small.
-   - `clientId` is your Client's ID. You can recieve it from Discord's Developer Portal. [For Slash Cmds]
+   - `devs` stores the ID of discord users that can run secret dev commands. You can add as many devs as you want, but It's recommended to keep it small.
+   - `clientId` is your Client's ID. You can receive it from Discord's Developer Portal. [For Slash Cmds]
    - `guildId` is your Testing Guild/Server's ID. [For Slash Cmds]
 
 # Contributing
@@ -77,7 +77,7 @@ Contributions are what make the open source community such an amazing place to l
 Check out [`CONTRIBUTING.md`](https://github.com/FadTheChad/FadBot/blob/main/.github/CONTRIBUTING.md) before doing the above!
 
 ## Issues
-Have a feature idea? Want to report a bug? Simply create an issue and we will try to see what we can do!
+Have a feature idea? Want to report a bug? Simply create an issue, and we will try to see what we can do!
 Make sure to check both of our [Issue Templates](https://github.com/FadTheChad/FadBot/tree/main/.github/ISSUE_TEMPLATE) before you send one!
 
 # Code Of Conduct
