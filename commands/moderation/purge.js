@@ -31,7 +31,7 @@ module.exports = {
 
         // if you wanted to delete 1 message, it would delete the msg where you ran this command, hence we do +1
         message.channel.bulkDelete(parseInt(count) + 1).then(() => {
-            const embed = fbEmbed('success', 'Purged Successfully!', `Successfully purged ${count} message${count != 1 ? 's' : ''}!`)
+            const embed = fbEmbed('success', 'Purged Successfully!', `Successfully purged ${count} message${parseInt(count) !== 1 ? 's' : ''}!`)
 
             message.channel.send({ embeds: [embed] }).then(msg => setTimeout(() => msg.delete(), 3000))
         })

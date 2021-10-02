@@ -16,7 +16,7 @@ module.exports = {
         if (isNaN(args[0]) || isNaN(args[1])) return message.channel.send({ embeds: [fbEmbed(
             'error',
             'Invalid Number!',
-            'One/Both of the arguements is not a number!'
+            'One/Both of the arguments is not a number!'
         )] })
 
         if (exceedsLimit(parseInt(args[0]), 1, 100000) || exceedsLimit(parseInt(args[1]), 1, 100000)) return message.channel.send({ embeds: [fbEmbed(

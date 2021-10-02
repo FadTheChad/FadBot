@@ -6,7 +6,11 @@ const GuildSchema = new Schema({
         welcomeChannel: {
             _id: { type: String },
             text: { type: String, default: '{member} has joined the server!' }
-        } // will add more to this
+        },
+        leaveChannel: {
+            _id: { type: String },
+            text: { type: String, default: '{member} has left the server!' }
+        }
     }
 })
 

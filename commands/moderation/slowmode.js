@@ -13,7 +13,7 @@ module.exports = {
 
         if (!amount) {
             const embed = fbEmbed('success', 'Slowmode Found!')
-                .addField('Current Slowmode', message.channel.rateLimitPerUser != 0 ? `\`${message.channel.rateLimitPerUser.toString()}\` seconds` : 'None')
+                .addField('Current Slowmode', message.channel.rateLimitPerUser !== 0 ? `\`${message.channel.rateLimitPerUser.toString()}\` seconds` : 'None')
 
             message.channel.send({ embeds: [embed] })
         } else {
@@ -29,7 +29,7 @@ module.exports = {
             }
 
             const embed = fbEmbed('success', 'Slowmode Successfully Set!')
-                .addField('Initial Slowmode', message.channel.rateLimitPerUser != 0 ? `\`${message.channel.rateLimitPerUser.toString()}\` seconds` : 'None')
+                .addField('Initial Slowmode', message.channel.rateLimitPerUser !== 0 ? `\`${message.channel.rateLimitPerUser.toString()}\` seconds` : 'None')
                 .addField('Final Slowmode', `\`${amount}\` seconds`)
 
             message.channel.setRateLimitPerUser(parseInt(amount)).then(() => message.channel.send({ embeds: [embed] }))
