@@ -1,6 +1,7 @@
 const { MessageEmbed } = require("discord.js")
 const { default: ms } = require("ms")
 const { fbEmbed } = require("../../utils/fbEmbed-utils")
+const { getMutedRole } = require('../../utils/db/muted-role-utils')
 
 module.exports = {
     name: 'mute',
@@ -13,7 +14,7 @@ module.exports = {
         //the member that the user is trying to mute
         const target = message.mentions.members.first() || await message.guild.members.fetch(args[0]).catch(e => { const target = undefined })
         
-        const mutedRole = message.guild.roles.cache.find(role => role.name.toLowerCase() === 'muted')
+        const mutedRole = await getMutedRole(message.guild.id)
 
         //if the target is not found
         if (!target || !args[0]) return message.channel.send('Please provide a valid user to mute')

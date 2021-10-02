@@ -8,9 +8,10 @@ const GuildSchema = new Schema({
             text: { type: String, default: '{member} has joined the server!' }
         },
         leaveChannel: {
-            _id: { type: String },
-            text: { type: String, default: '{member} has left the server!' }
-        }
+            _id: {type: String},
+            text: {type: String, default: '{member} has left the server!'}
+        },
+        mutedRole: String
     }
 })
 
