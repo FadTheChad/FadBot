@@ -1,24 +1,29 @@
 # Versions
 
-# 0.14.0
+## 0.15.0
+- Added a dev-only user bl cmd.
+- Added a UserSchema
+- Updated GuildSchema to have a prefix property which will be used later ;)
+
+## 0.14.0
 - FadBot is now being developed in JetBrains WebStorm. Very pog.
 - Muted role can now be manually set through db!
 - Added a >leave cmd similar to >welcomechannel cmd.
 
-# 0.13.0
+## 0.13.0
 - MongoDB is here!
 - Added a >welcomechannel cmd
 
-# 0.12.2 9/27/21
+## 0.12.2 9/27/21
 - Ban, kick, mute, unban, and unmute now have better error handling
 - Made the above commands use fbEmbed more where they did not.
 
-# 0.12.1 9/26/21
+## 0.12.1 9/26/21
 - Made ban command use fbEmbed wherever it was easily usable.
 - Added a publics folder with the bot's logo.
 - Formatted code og `botinfo.js`.
 
-# 0.12.0 9/25/21
+## 0.12.0 9/25/21
 - Context Menus handler has been fully set up and ready for use!
 - Added a ctx-content command
 - Added a ctx-avatar command
