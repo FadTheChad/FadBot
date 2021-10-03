@@ -24,5 +24,5 @@ module.exports.setMutedRole = (guildId, mutedRole) => {
 module.exports.getMutedRole = async (guildId) => {
     const result = await Schema.findOne({ _id: guildId })
 
-    return result.config.mutedRole
+    return result?.config.mutedRole
 }
