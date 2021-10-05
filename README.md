@@ -51,13 +51,15 @@ Node `v16.6+` is required. You can install it at their [official site](https://n
     "prefix": "Your Prefix Here",
     "devs": ["devId1", "devId2"],
     "clientId": "Your Client ID Here",
-    "guildId": "Your Guild ID Here"
+    "guildId": "Your Guild ID Here",
+    "mongoURL": "Your Mongodb Url Here"
     ```
    - `token` is the Bot's Token. You can receive it from Discord's Developer Portal.
    - `prefix` is the bot's prefix.
    - `devs` stores the ID of discord users that can run secret dev commands. You can add as many devs as you want, but It's recommended to keep it small.
    - `clientId` is your Client's ID. You can receive it from Discord's Developer Portal. [For Slash Cmds]
    - `guildId` is your Testing Guild/Server's ID. [For Slash Cmds]
+   - `mongoURL` is the url string of your mongoDB DB.
 
 # Contributing
 Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are greatly appreciated.
