@@ -1,5 +1,9 @@
 # Versions
 
+## 0.16.0
+- Custom prefixes are here!
+- Added a small cache system for getting the prefix of a guild which will later be implemented in all db cmds (hopefully).
+
 ## 0.15.0
 - Added a dev-only user bl cmd.
 - Added a UserSchema
