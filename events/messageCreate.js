@@ -1,11 +1,14 @@
 const { MessageEmbed } = require('discord.js')
 const config = require('../config.json')
 const { fbEmbed } = require('../utils/fbEmbed-utils')
-const { prefix, devs } = config
+const { getPrefix } = require("../utils/db/prefix-utils");
+const { prefix: guildPrefix , devs } = config
 
 module.exports = {
     name: 'messageCreate',
-    run (message, client) {
+    async run (message, client) {
+        let prefix = await getPrefix(message.guild.id) || guildPrefix
+
         if (message.content.match(new RegExp('^<@!?' + client.user.id + '>'))) return message.reply(`My prefix is \`${prefix}\``)
         
         if (!message.content.startsWith(prefix) || message.author.bot) return
