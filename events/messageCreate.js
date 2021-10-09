@@ -7,12 +7,14 @@ const { prefix: guildPrefix , devs } = config
 module.exports = {
     name: 'messageCreate',
     async run (message, client) {
+        if (message.content.match(new RegExp('^<@!?' + client.user.id + '>'))) return message.reply(`My prefix is \`${prefix}\``)
+
         let prefix = await getPrefix(message.guild.id) || guildPrefix
 
-        if (message.content.match(new RegExp('^<@!?' + client.user.id + '>'))) return message.reply(`My prefix is \`${prefix}\``)
-        
         if (!message.content.startsWith(prefix) || message.author.bot) return
-            
+
+        if (!message.guild) return message.channel.send('Hey! At the time being, you can only run commands in servers! Sorry!')
+
         const args = message.content.slice(prefix.length).trim().split(/ +/)
         const commandName = args.shift().toLowerCase()
         
