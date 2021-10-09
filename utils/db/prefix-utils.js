@@ -32,7 +32,5 @@ module.exports.getPrefix = async (guildId) => {
 
     prefixCache[guildId] = result?.config.prefix
 
-    console.log(prefixCache)
-
     return result?.config.prefix
 }
