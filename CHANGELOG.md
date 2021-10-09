@@ -1,5 +1,12 @@
 # Versions
 
+## 0.17.0
+- Added a 'nsfw' command
+- The Logo in >botinfo embed is now a thumbnail and of much higher quality
+- \>botinfo command now has an embed field for the Trello Page of FadBot!
+- Fixed a HUGE bug where the bot crashed on reading commands from DMs.
+- `utils/db/prefix.js` had a console.log for testing so removed that afterwards.
+
 ## 0.16.0
 - Custom prefixes are here!
 - Added a small cache system for getting the prefix of a guild which will later be implemented in all db cmds (hopefully).
