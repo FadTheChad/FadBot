@@ -16,6 +16,7 @@ module.exports = {
             .addField('Version', 'v0.16.0')
             .addField('Github', '[Leave us a star for support!](https://github.com/FadTheChad/FadBot)', true)
             .addField('Support Server', '[Join our Official Support Server!](https://discord.gg/3tEGymY5pE)', true)
+            .addField('Trello', '[Get A Look At Upcoming Features and Ideas!](https://trello.com/b/4qiwoazB/fadbot-board)', true)
             .setThumbnail('https://github.com/FadTheChad/FadBot/blob/main/public/logo.png?raw=true')
 
         message.channel.send({ embeds: [embed] })
