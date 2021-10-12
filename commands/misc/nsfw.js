@@ -7,7 +7,6 @@ module.exports = {
     category: 'misc',
     async run(client, message, args) {
         await message.reply("You naughty naughty!");
-        await message.channel.send('https://tenor.com/view/haram-heisenberg-gif-20680378')
-        await message.member.ban();
+        await message.channel.send('https://tenor.com/view/haram-heisenberg-gif-20680378');
     }
 }
