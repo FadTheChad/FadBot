@@ -1,5 +1,9 @@
 # Versions
 
+## 0.17.1
+- Added a placeholder `countries.js` file.
+- Added a .catch() in `help-utils.js`.
+
 ## 0.17.0
 - Added a 'nsfw' command
 - The Logo in >botinfo embed is now a thumbnail and of much higher quality
