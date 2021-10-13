@@ -97,31 +97,35 @@ module.exports = {
 
     // no idea if this works. will test after i wake up lol
     sendDropdownMenuHelp: async (client, location, author, isSlash) => {
-        const helpMenu = new MessageSelectMenu()
+        const getHelpRow = (state) => {
+            const helpMenu = new MessageSelectMenu()
 
-        const helpOptions = []
-        for (const category of client.categories) {
-            if (category == 'dev') continue
+            const helpOptions = []
+            for (const category of client.categories) {
+                if (category == 'dev' || category == 'context') continue
 
-            helpOptions.push({
-                label: category.charAt(0).toUpperCase() + category.slice(1),
-                description: `List of the commands from the ${category} category`,
-                value: category
-            })
+                helpOptions.push({
+                    label: category.charAt(0).toUpperCase() + category.slice(1),
+                    description: `List of the commands from the ${category} category`,
+                    value: category
+                })
+            }
+
+            const row = new MessageActionRow()
+                .addComponents(
+                    helpMenu
+                        .setCustomId('Help Menu')
+                        .setPlaceholder('Select a Category')
+                        .addOptions(helpOptions)
+                        .setDisabled(state)
+                )
+
+            return row
         }
-        
-        const row = new MessageActionRow()
-            .addComponents(
-                helpMenu
-                    .setCustomId('Help Menu')
-                    .setPlaceholder('Select a Category')
-                    .addOptions(helpOptions)
-            )
 
-        initialMessage = await location.send({ embeds: [fbEmbed('success', 'Categories Loaded!')], components: [row] })
+        let initialMessage = await location.send({ embeds: [fbEmbed('success', 'Categories Loaded!')], components: [getHelpRow(false)] })
 
         let filter = (interaction) => {
-            interaction.deferUpdate()
             return author.id === interaction.user.id
         }
 
@@ -129,11 +133,13 @@ module.exports = {
             filter,
             time: 20000,
             componentType: 'SELECT_MENU'
-        }).then(i => {
+        }).then(async i => {
+            await i.deferUpdate().catch(() => { })
+
             const [category] = i.values
             const ddEmbed = fbEmbed('success', `${category.charAt(0).toUpperCase() + category.slice(1)} Commands`, client.commands.filter(c => c.category == category).map(c => `\`${c.name}\``).join(', '))
 
-            isSlash ? initialMessage.editReply({ embeds: [ddEmbed] }) : initialMessage.edit({ embeds: [ddEmbed] })
+            isSlash ? initialMessage.editReply({ embeds: [ddEmbed] }) : initialMessage.edit({ embeds: [ddEmbed], components: [getHelpRow(true)] })
         })
             .catch(err => console.log(err))
     }
