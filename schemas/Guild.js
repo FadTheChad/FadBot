@@ -6,11 +6,11 @@ const GuildSchema = new Schema({
     config: {
         prefix: { type: String, default: prefix },
         welcomeChannel: {
-            _id: { type: String },
+            id: { type: String },
             text: { type: String, default: '{member} has joined the server!' }
         },
         leaveChannel: {
-            _id: {type: String},
+            id: { type: String },
             text: {type: String, default: '{member} has left the server!'}
         },
         mutedRole: String
