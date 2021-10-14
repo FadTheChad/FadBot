@@ -5,7 +5,7 @@ module.exports = {
     name: 'botinfo',
     description: 'Sends info of FadBot',
     aliases: ['bi'],
-    category: 'moderation',
+    category: 'info',
     run (client, message, args) {
         const embed = fbEmbed(
             'success', 
