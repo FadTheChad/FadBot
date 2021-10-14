@@ -5,7 +5,7 @@ module.exports.setLeave = (guildId, channelId, text) => {
         if (err) throw err
 
         if (data) {
-            data.config.leaveChannel._id = channelId
+            data.config.leaveChannel.id = channelId
             if (text) data.config.leaveChannel.text = text
 
             data.save()
@@ -14,7 +14,7 @@ module.exports.setLeave = (guildId, channelId, text) => {
                 _id: guildId,
                 config: {
                     leaveChannel: {
-                        _id: channelId
+                        id: channelId
                     }
                 }
             })

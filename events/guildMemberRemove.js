@@ -6,9 +6,9 @@ module.exports = {
         GuildSchema.findOne({ _id: member.guild.id }, async (err, data) => {
             if (err) throw err
 
-            if (!data || !data.config.leaveChannel?._id) return
+            if (!data || !data.config.leaveChannel?.id) return
 
-            const lChannel = member.guild.channels.cache.get(data.config.leaveChannel._id)
+            const lChannel = member.guild.channels.cache.get(data.config.leaveChannel.id)
             const lMessage = data.config.leaveChannel.text
 
             const lEmbed = fbEmbed('success', 'Member Left!', lMessage.replace(/{member}/g, member.user.tag).replace(/{memberId}/g, member.id).replace(/{server}/, member.guild.name))

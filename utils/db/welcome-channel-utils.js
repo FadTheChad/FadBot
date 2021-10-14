@@ -6,7 +6,7 @@ module.exports.setWelcome = (guildId, channelId, text) => {
         if (err) throw err
 
         if (data) {
-            data.config.welcomeChannel._id = channelId
+            data.config.welcomeChannel.id = channelId
             if (text) data.config.welcomeChannel.text = text
 
             data.save()
@@ -15,7 +15,7 @@ module.exports.setWelcome = (guildId, channelId, text) => {
                 _id: guildId,
                 config: {
                     welcomeChannel: {
-                        _id: channelId
+                        id: channelId
                     }
                 }
             })
