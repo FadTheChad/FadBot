@@ -1,5 +1,9 @@
 # Versions
 
+## 0.17.2
+- Fixed a HUGE mongoose error that crashed the bot due to un-unique keys. Probably the biggest error of FadBot.
+- Fixed botinfo category that made it be in the moderation section, when it shouldn't be.
+
 ## 0.17.1
 - Added a placeholder `countries.js` file.
 - Added a .catch() in `help-utils.js`.
