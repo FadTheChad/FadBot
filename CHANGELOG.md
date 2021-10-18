@@ -1,5 +1,9 @@
 # Versions
 
+# 0.17.3
+- Fixed help cmd err handling.
+- Help cmd flags are now case-insensitive.
+
 ## 0.17.2
 - Fixed a HUGE mongoose error that crashed the bot due to un-unique keys. Probably the biggest error of FadBot.
 - Fixed botinfo category that made it be in the moderation section, when it shouldn't be.
