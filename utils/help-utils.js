@@ -18,7 +18,7 @@ module.exports = {
             embed.addField(cat.charAt(0).toUpperCase() + cat.slice(1), commands.map(c => `\`${c.name}\``).join(", "));
         }
         
-        location.send({embeds: [embed]});
+        return location.send({embeds: [embed]})?.catch(() => { })
     },
 
     sendCommandOrCategoryHelp: (client, location, searchedCommand, authorId) => {
@@ -30,7 +30,8 @@ module.exports = {
                 .setDescription('That command/category doesn\'t seem to exist. run `' + prefix + 'help` for a whole list of commands and categories!')
                 .setColor(0xFFFF00)
             
-            return location.send({ embeds: [errEmbed] })
+            location.send({ embeds: [errEmbed] })?.catch(() => { })
+            return
         }
 
         // if the searched word is found to be one of the categories
@@ -43,7 +44,7 @@ module.exports = {
                 .addField(`${cmdOrCat.charAt(0).toUpperCase() + cmdOrCat.slice(1)} Commands`, commands.map(c => `\`${c.name}\``).join(', '))
                 .setColor(0xFFFF00)
 
-            location.send({ embeds: [embed] })
+            return location.send({ embeds: [embed] })?.catch(() => { })
         } else {
             const embed = new MessageEmbed()
                 .setTitle('Command Found!')
@@ -59,7 +60,7 @@ module.exports = {
             
             embed.setFooter(`${authorId}${cmdOrCat.usage ? ' | <> - required, [] - optional' : ''}`)
 
-            location.send({embeds: [embed]})
+            return location.send({embeds: [embed]})?.catch(() => { })
         }
     },
 
@@ -123,7 +124,9 @@ module.exports = {
             return row
         }
 
-        let initialMessage = await location.send({ embeds: [fbEmbed('success', 'Categories Loaded!')], components: [getHelpRow(false)] })
+        let initialMessage = await location.send({ embeds: [fbEmbed('success', 'Categories Loaded!')], components: [getHelpRow(false)] }).catch(() => { })
+
+        if (!initialMessage) return
 
         let filter = (interaction) => {
             return author.id === interaction.user.id
