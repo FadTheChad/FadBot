@@ -1,5 +1,9 @@
 # Versions
 
+# 0.18.0
+- Countries mini-game is here!
+- \>embed cmd now has its own custom error handler!
+
 # 0.17.3
 - Fixed help cmd err handling.
 - Help cmd flags are now case-insensitive.
