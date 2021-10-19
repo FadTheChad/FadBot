@@ -1,5 +1,6 @@
 const { MessageEmbed } = require("discord.js")
 const { fbEmbed } = require("../../utils/fbEmbed-utils")
+const checkEmbed = require('../../utils/embed-utils')
 
 module.exports = {
     name: 'embed',
@@ -11,6 +12,11 @@ module.exports = {
     run (client, message, args) {
         try {
             const said = JSON.parse(args.join(' '))
+
+            const badRequest = checkEmbed(said)
+
+            if (badRequest) throw new Error(badRequest)
+
             const embed = new MessageEmbed(said)
 
             message.channel.send({ embeds: [embed] })
