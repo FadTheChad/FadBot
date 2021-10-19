@@ -1,0 +1,50 @@
+[
+  {
+    "name": "pakistan",
+    "code": "pk"
+  },
+  {
+    "name": "india",
+    "code": "in"
+  },
+  {
+    "name": "palestine",
+    "code": "ps"
+  },
+  {
+    "name": ["germany", "deutschland"],
+    "code": "de"
+  },
+  {
+    "name": "denmark",
+    "code": "dk"
+  },
+  {
+    "name": ["usa", "us", "united states", "united states of america", "america", "burger"],
+    "code": "us"
+  },
+  {
+    "name": ["france", "baguette", "croissant", "filet mignon"],
+    "code": "fr"
+  },
+  {
+    "name": ["united kingdom", "uk", "bo'ah o' wo'ah", "fish and chips", "peaky blinders innit"],
+    "code": "gb"
+  },
+  {
+    "name": ["russia", "vodka", "ex-ussr", "ex-soviet", "ex-soviet union"],
+    "code": "ru"
+  },
+  {
+    "name": ["bangladesh", "east pakistan", "former east pakistan", "future east pakistan"],
+    "code": "bd"
+  },
+  {
+    "name": ["ireland", "potatoe"],
+    "code": "ie"
+  },
+  {
+    "name": ["finland", "the country fad only knows because patrick from spongebob said it in one episode"],
+    "code": "fi"
+  }
+]
