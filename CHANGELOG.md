@@ -1,5 +1,10 @@
 # Versions
 
+# 0.18.1
+- messageCreate.js tried to access prefix before init whenever you pinged bot for response. Fixed!
+- Announce command had a weird bug when you mentioned the announcement channel. Fixed!
+- Added a null check to all args in help.js!
+
 # 0.18.0
 - Countries mini-game is here!
 - \>embed cmd now has its own custom error handler!
