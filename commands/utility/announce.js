@@ -16,7 +16,7 @@ module.exports = {
             return message.channel.send({ embeds: [errEmbed] })
         }
 
-        const said = !message.guild.channels.cache.get(args[0]) ? args.join(' ') : args.slice(1).join(' ')
+        const said = (!message.guild.channels.cache.get(args[0]) && !message.mentions.channels.first()) ? args.join(' ') : args.slice(1).join(' ')
 
         const announcement = fbEmbed('success', 'Announcement!', said)
             .setFooter(message.author.id)
