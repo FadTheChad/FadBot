@@ -28,7 +28,7 @@ module.exports = {
 
         if (args[0]?.toLowerCase() === '-dd') return sendDropdownMenuHelp(client, message.channel, message.author, false)
 
-        if (args[1].toLowerCase() === '-dm') {
+        if (args[1]?.toLowerCase() === '-dm') {
             try {
                 const sent = await sendCommandOrCategoryHelp(client, message.author, args[0], message.author.id)
 
