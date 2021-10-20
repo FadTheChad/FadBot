@@ -9,11 +9,11 @@ module.exports = {
     async run (message, client) {
         if (message.author.bot) return
 
-        if (message.content.match(new RegExp('^<@!?' + client.user.id + '>'))) return message.reply(`My prefix is \`${prefix}\``)
-
         if (!message.guild && message.content.startsWith(guildPrefix)) return message.channel.send('Hey! At the time being, you can only run commands in servers! Sorry!')
-
+        
         let prefix = await getPrefix(message.guild.id) || guildPrefix
+        
+        if (message.content.match(new RegExp('^<@!?' + client.user.id + '>'))) return message.reply(`My prefix is \`${prefix}\``)
 
         if (!message.content.startsWith(prefix) || message.author.bot) return
 
