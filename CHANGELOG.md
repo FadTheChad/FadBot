@@ -1,5 +1,8 @@
 # Versions
 
+# 0.18.2
+- Changed Event run functions' Parameter Positioning.
+
 # 0.18.1
 - messageCreate.js tried to access prefix before init whenever you pinged bot for response. Fixed!
 - Announce command had a weird bug when you mentioned the announcement channel. Fixed!
