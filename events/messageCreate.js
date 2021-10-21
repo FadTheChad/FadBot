@@ -6,7 +6,7 @@ const { prefix: guildPrefix , devs } = config
 
 module.exports = {
     name: 'messageCreate',
-    async run (message, client) {
+    async run (client, message) {
         if (message.author.bot) return
 
         if (!message.guild && message.content.startsWith(guildPrefix)) return message.channel.send('Hey! At the time being, you can only run commands in servers! Sorry!')

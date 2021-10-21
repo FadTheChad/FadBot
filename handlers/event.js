@@ -10,9 +10,9 @@ module.exports = (client) => {
         console.log(`\t ${event.name} event has been loaded!`)
 	
         if (event.once) {
-		    client.once(event.name, (...args) => event.run(...args, client))
+		    client.once(event.name, (...args) => event.run(client, ...args))
 	    } else {
-		    client.on(event.name, (...args) => event.run(...args, client))
+		    client.on(event.name, (...args) => event.run(client, ...args))
 	    }
     }
 }

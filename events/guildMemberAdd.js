@@ -3,7 +3,7 @@ const { fbEmbed } = require('../utils/fbEmbed-utils')
 
 module.exports = {
     name: 'guildMemberAdd',
-    run (member, client) {
+    run (client, member) {
         GuildSchema.findOne({ _id: member.guild.id }, async (err, data) => {
             if (err) throw err
 

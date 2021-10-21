@@ -2,7 +2,7 @@ const GuildSchema = require("../schemas/Guild");
 const {fbEmbed} = require("../utils/fbEmbed-utils");
 module.exports = {
     name: 'guildMemberRemove',
-    run (member, client) {
+    run (client, member) {
         GuildSchema.findOne({ _id: member.guild.id }, async (err, data) => {
             if (err) throw err
 

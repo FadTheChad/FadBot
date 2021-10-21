@@ -3,7 +3,7 @@ const { fbEmbed } = require('../utils/fbEmbed-utils')
 
 module.exports = {
     name: 'interactionCreate',
-    async run (interaction, client) {
+    async run (client, interaction) {
         if (interaction.isCommand()) {
             const slashCommand = client.slashCommands.get(interaction.commandName)
 
