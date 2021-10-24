@@ -3,13 +3,13 @@
 </h1>
 
 <h2 align="center" style="position: relative;">
-    A Multipurpose Open-Source Bot in JavaScript
+    A Multipurpose Open-Source Bot in TypeScript
 </h2>
 
 # About The Project
 ![Logo](./public/logo.png)
 
-FadBot is a multipurpose and open-source discord bot currently being developed using javascript. Currently, at the time of `v0.x.x` it doesn't really do much, but I will try my best to frequently add more features.
+FadBot is a multipurpose and open-source discord bot currently being developed using typescript. Currently, there's only one dev working on it, but I will try my best to frequently add more features.
 
 Here are some things that you can expect from the bot:
 
@@ -19,12 +19,13 @@ Here are some things that you can expect from the bot:
 
 ## Built With
 * [discord.js](https://github.com/discordjs/discord.js)
+* typescript (using ts-node)
 
 ## Devs
 * Fad The Chad
 
 ## Version
-**Current Version:** v0.18.2
+**Current Version:** v1.0.0
 
 See `CHANGELOG.md` for all changes
 
@@ -34,14 +35,19 @@ If you want to see some ideas/features that the bot could get, check out our [Tr
 # Get Started
 
 ## Requirements
-Node `v16.6+` is required. You can install it at their [official site](https://nodejs.org/en/download/).
+- Node `v16.6+` is required. You can install it at their [official site](https://nodejs.org/en/download/).
+
+- `typescript` and `ts-node` is required. You can install it by doing
+   ```shell
+   npm i -g typescript ts-node
+   ```
 
 ## Installation
 
 1. Clone this repo
 
 1. Install the NPM Packages
-    ```
+    ```shell
     npm install
     ```
 

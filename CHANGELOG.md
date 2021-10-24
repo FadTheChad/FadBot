@@ -1,5 +1,13 @@
 # Versions
 
+# 1.0.0 [24/10/21]
+- FadBot v1.0.0 is here!!!
+- The bot has now moved to typescript!
+- The bot now has a Custom Client called `FadBotClient`!
+- The bot now has a dbCache object for caching db data! 
+- Added a new Automoderation category that will have some nice features for your server!
+- Note: I will try to make the bot fully public this week, so be on the lookout!
+
 # 0.18.2
 - Changed Event run functions' Parameter Positioning.
 
@@ -22,7 +30,7 @@
 
 ## 0.17.1
 - Added a placeholder `countries.js` file.
-- Added a .catch() in `help-utils.js`.
+- Added a .catch() in `help-utils.ts`.
 
 ## 0.17.0
 - Added a 'nsfw' command
@@ -104,7 +112,7 @@
 - Added a max limit to the slowmode command.
 
 ## 0.7.0 9/19/21
-- Added a whole new fbEmbed system with types which is now implemented in almost every file which uses a success/error embed. Check `utils/fbEmbed-utils.js` for the system.
+- Added a whole new fbEmbed system with types which is now implemented in almost every file which uses a success/error embed. Check `utils/fbEmbed-utils.ts` for the system.
 - Now whenever a command file or an event file is loaded, it gets logged on the console.
 - Running a command now gives details in the console.
 - Improved the error message that gets logged on to a console whenever a command is note ran successfully.
