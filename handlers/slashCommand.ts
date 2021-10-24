@@ -24,7 +24,7 @@ const handler = async (client: FadBotClient, forDeploy: boolean) => {
 
             slashCommand.data = {
                 name: '',
-                type: 'CHAT_INPUT'
+                type: 1
             }
 
             // @ts-ignore

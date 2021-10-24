@@ -9,8 +9,10 @@ const event: IEvent = {
         if (interaction.isCommand()) {
             const slashCommand = client.slashCommands.get(interaction.commandName)
 
+            console.log(slashCommand)
+
             // @ts-ignore
-            if (!slashCommand || slashCommand?.slashRun) return
+            if (!slashCommand || !slashCommand?.slashRun) return
 
             // @ts-ignore
             if (slashCommand.permissions) {
