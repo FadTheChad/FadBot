@@ -10,6 +10,8 @@ const command: ICommand = {
     permissions: 'BAN_MEMBERS',
     run (client, message, args) {
         const soon = fbEmbed('success', 'Soon! ;)')
+
+        return message.channel.send({ embeds: [soon] })
     }
 }
 

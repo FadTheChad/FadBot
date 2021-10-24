@@ -46,12 +46,12 @@ If you want to see some ideas/features that the bot could get, check out our [Tr
 
 1. Clone this repo
 
-1. Install the NPM Packages
+2. Install the NPM Packages
     ```shell
     npm install
     ```
 
-1. Make a `config.json` file in the root of the directory and add:
+3. Make a `config.json` file in the root of the directory and add:
     ```json
     "token": "Your Token Here",
     "prefix": "Your Prefix Here",
@@ -67,6 +67,10 @@ If you want to see some ideas/features that the bot could get, check out our [Tr
    - `guildId` is your Testing Guild/Server's ID. [For Slash Cmds]
    - `mongoURI` is the connection srv/local string of your mongoDB DB.
 
+4. And finally, run the bot!
+   ```shell
+   ts-node .
+   ```
 # Contributing
 Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are greatly appreciated.
 
