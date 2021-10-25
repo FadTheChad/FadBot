@@ -1,15 +1,20 @@
+// modules
 import { Client, ClientOptions, Collection } from 'discord.js'
 import { readdirSync } from 'fs'
 import mongoose, { ConnectOptions } from 'mongoose'
 
+// interfaces and configuration
 import ICommand from "./interfaces/ICommand"
 import IContextCommand from './interfaces/IContextCommand'
 import config from '../config.json'
 
+// handlers/loaders
 import cmdHandler from '../handlers/command'
 import slashCmdHandler from '../handlers/slashCommand'
 import eventHandler from '../handlers/event'
 
+// dbCache Utils/Interfaces
+import { IGuildCache } from './interfaces/db/IGuild'
 
 /**
  * @description - The Custom Client Of FadBot
@@ -30,9 +35,9 @@ export default class FadBotClient extends Client {
     public loadSlashCommands = slashCmdHandler
     public loadEvents = eventHandler
 
-    // Database Cache
+    // Database Cache, for storing db data locally for better performance
     public dbCache: {
-        guilds: { [key: string]: {} },
+        guilds: { [key: string]: IGuildCache | undefined},
         users: { [key: string]: {} }
     } = {
         guilds: {},

@@ -3,7 +3,7 @@ interface IChannelConfig {
     text: string
 }
 
-interface IConfig {
+interface IGuildConfig {
     prefix: string,
     welcomeChannel: IChannelConfig,
     leaveChannel: IChannelConfig,
@@ -12,5 +12,18 @@ interface IConfig {
 
 export default interface IGuild {
     _id: string,
-    config: IConfig,
+    config: IGuildConfig,
 }
+
+interface IChannelConfigCache {
+    id?: string,
+    text?: string
+}
+
+export interface IGuildCache {
+    prefix?: string,
+    welcomeChannel?: IChannelConfigCache,
+    leaveChannel?: IChannelConfigCache,
+    mutedRole?: string
+}
+
