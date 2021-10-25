@@ -1,5 +1,10 @@
 # Versions
 
+# 1.0.1 [25/10/21]
+- FadBot's dbCache system now has an interface for the guild section!
+- FadBot's dbCache system is now being tested on the prefix module!
+- The permissions type in the structure folder is now more clean
+
 # 1.0.0 [24/10/21]
 - FadBot v1.0.0 is here!!!
 - The bot has now moved to typescript!
