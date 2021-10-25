@@ -13,7 +13,7 @@ const event: IEvent = {
 
         if (!message.guild && message.content.startsWith(guildPrefix)) return message.channel.send('Hey! At the time being, you can only run commands in servers! Sorry!')
         
-        let prefix = await getPrefix(message.guild!?.id) || guildPrefix
+        let prefix = await getPrefix(message.guild!?.id, client) || guildPrefix
         
         if (message.content.match(new RegExp('^<@!?' + client.user!.id + '>'))) return message.reply(`My prefix is \`${prefix}\``)
 
