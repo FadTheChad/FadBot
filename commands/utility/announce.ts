@@ -1,5 +1,6 @@
 import ICommand from '../../structure/interfaces/ICommand'
 import fbEmbed from '../../utils/fbEmbed-utils'
+import { TextChannel } from 'discord.js'
 
 const command: ICommand = {
     name: 'announce',
@@ -9,7 +10,7 @@ const command: ICommand = {
     category: 'utility',
     permissions: 'ADMINISTRATOR',
     run (client, message, args) {
-        const channel = message.mentions.channels.first() || message.guild!.channels.cache.get(args[0]) || message.guild!.channels.cache.find(r => r.name.toLowerCase() === 'announcements')
+        let channel: TextChannel | undefined = (message.mentions.channels.first() || message.guild!.channels.cache.get(args[0]) || message.guild!.channels.cache.find(r => r.name.toLowerCase() === 'announcements')) as TextChannel
 
         if (!channel || channel.type !== 'GUILD_TEXT') {
             const errEmbed = fbEmbed('error', 'Announcement Channel Not Found!', 'Please either create a channel named `announcements` or specify a channel!')
@@ -23,10 +24,9 @@ const command: ICommand = {
             .setFooter(message.author.id)
             .setTimestamp()
 
-        // @ts-ignore
         channel.send({ embeds: [announcement] })
             .then(() => {
-                const successEmbed = fbEmbed('success', 'Announcement Sent!', `Announcement has been successfully sent in <#${channel.id}>!`)
+                const successEmbed = fbEmbed('success', 'Announcement Sent!', `Announcement has been successfully sent in <#${channel!.id}>!`)
 
                 message.channel.send({ embeds: [successEmbed] })
             })
