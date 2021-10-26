@@ -1,4 +1,4 @@
-import ms from 'ms'
+import ms, { StringValue } from 'ms'
 import fbEmbed from '../../utils/fbEmbed-utils'
 import ICommand from '../../structure/interfaces/ICommand'
 
@@ -12,7 +12,8 @@ const command: ICommand = {
     async run (client, message, args) {
         //the member that the user is trying to ban
         const target = message.mentions.members!?.first() || await message.guild!.members.fetch(args[0]).catch(e => { const target = undefined })
-        
+
+        console.log(target)
         //if the target is not found
         if (!target || !args[0]) return message.channel.send('Please provide a valid user to ban')
         
@@ -24,9 +25,9 @@ const command: ICommand = {
 
         if (target.roles.highest.id === message.member!.roles.highest.id || target.roles.highest.id === message.guild!.me?.roles.highest.id) return message.channel.send('The member you are trying to ban has the same role as you/me!')
 
-        let time = args[0] ? ms(parseInt(args[0])) : null
+        let time = args[1] ? ms(args[1] as StringValue) : null
 
-        let reason = (!time || (isNaN(parseInt(time))) ? args.slice(1).join(' ') : args.slice(2).join(' ')) || 'No Reason Specified'
+        let reason = (!time || (isNaN(time)) ? args.slice(1).join(' ') : args.slice(2).join(' ')) || 'No Reason Specified'
 
         const banEmbed = fbEmbed('success', 'User Banned!')
             .addField('Banned User', `${target.user.tag} (${target.id})`)
@@ -36,9 +37,9 @@ const command: ICommand = {
         const banUserEmbed =  fbEmbed('error', 'Banned!', `You have been banned from ${message.guild!.name}!`)
             .addField('Reason', reason)
 
-        if (!!time && !isNaN(parseInt(time))) {
-            banEmbed.addField('Duration', `${ms(parseInt(time))}`)
-            banUserEmbed.addField('Duration', `${ms(parseInt(time))}`)
+        if (!!time && !isNaN(time)) {
+            banEmbed.addField('Duration', `${ms(time)}`)
+            banUserEmbed.addField('Duration', `${ms(time)}`)
         }
 
         const targetId = target.id
@@ -54,7 +55,7 @@ const command: ICommand = {
                 return message.channel.send({ embeds: [fbEmbed('error', 'Unable to ban user!', 'Might be because of member having higher permissions!')] })
             })
 
-        if (!!time && !isNaN(parseInt(time))) {
+        if (!!time && !isNaN(time)) {
             setTimeout(async () => {
                 const found = await message.guild!.bans.fetch(targetId).catch(e => console.log('Ban does not exist'))
                 console.log(found)
@@ -67,7 +68,7 @@ const command: ICommand = {
                         })
                         .catch(e => console.log('Unable to unban user'))
                 }
-            }, parseInt(time))
+            }, time)
         }
     }
 }
