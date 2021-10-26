@@ -21,7 +21,7 @@ const command: ICommand = {
                     return message.channel.send({ embeds: [embed] })
                 }
 
-                setMutedRole(message.guild!.id, mutedRole.id)
+                setMutedRole(message.guild!.id, mutedRole.id, client)
 
                 message.channel.send({ embeds: [fbEmbed('success', 'Muted Role Successfully Set!', `Role <@&${mutedRole.id}> has been set as the muted role for this server!`)] })
         }
