@@ -18,9 +18,10 @@ const command: ICommand = {
             return message.channel.send({ embeds: [errEmbed] })
         }
 
-        let text = args.slice(1).join(' ')
+        let text
+        if (args[1]) text = args.slice(1).join(' ')
 
-        setWelcome(message.guild!.id, channel.id, text)
+        setWelcome(message.guild!.id, channel.id, client, text)
 
         message.channel.send(`Works! maybe.`)
     }
