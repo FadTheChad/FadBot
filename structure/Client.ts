@@ -37,13 +37,27 @@ export default class FadBotClient extends Client {
 
     // Database Cache, for storing db data locally for better performance
     public dbCache: {
-        guilds: { [key: string]: IGuildCache | undefined},
+        guilds: { [key: string]: IGuildCache | undefined },
         users: { [key: string]: {} }
     } = {
         guilds: {},
         users: {}
     }
 
+    public validateDbCache(cacheSection: { [key: string]: IGuildCache | undefined }, id: string): void {
+        if (!cacheSection[id]) cacheSection[id] = {}
+    }
+
+    public clearCache(cacheSection: { [key: string]: IGuildCache | undefined } | 'all') {
+        if (cacheSection === 'all') {
+            for (let key of Object.keys(this.dbCache)) {
+                // @ts-ignore
+                this.dbCache[`${key}`] = {}
+            }
+        } else {
+            cacheSection = {}
+        }
+    }
     // Database Connection Method
     public connectToDb(connectString: string): void {
         mongoose.connect(config.mongoURI, {
