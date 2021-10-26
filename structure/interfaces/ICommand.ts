@@ -1,12 +1,16 @@
-import { CommandInteraction, Message } from "discord.js"
+import { ApplicationCommandOption, CommandInteraction, Message } from 'discord.js'
 import { Permissions } from "./types/Permissions"
 import FadBotClient from '../Client'
+import { readdirSync } from 'fs'
+
+const categories = <const>[...readdirSync('./commands')]
+
 
 interface IData {
     name: string,
     description?: string,
-    options?: any[],
-    type: string | number
+    options?: ApplicationCommandOption[],
+    type: number
 }
 
 type Run = (
@@ -20,15 +24,17 @@ type SlashRun = (
     interaction: CommandInteraction
 ) => any | Promise<any>
 
+type Category = typeof categories[number]
+
 export default interface ICommand {
     data?: IData,
     name: string,
     description?: string,
     aliases?: string[] | string,
-    type?: string | number
+    type?: number
     options?: any[]
     usage?: string,
-    category: string,
+    category: Category,
     permissions?: Permissions | Permissions[]
     run: Run,
     slashRun?: SlashRun,

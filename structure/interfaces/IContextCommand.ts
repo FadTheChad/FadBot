@@ -16,6 +16,6 @@ type ContextName = `ctx-${string}`
 export default interface IContextCommand {
     data?: IData
     name: ContextName,
-    type: string | number,
+    type: number,
     contextRun: ContextRun
 }
