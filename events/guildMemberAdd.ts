@@ -1,7 +1,7 @@
 import GuildSchema from '../schemas/Guild'
 import fbEmbed from '../utils/fbEmbed-utils'
 import IEvent from '../structure/interfaces/IEvent'
-import { GuildMember } from 'discord.js'
+import { GuildMember, TextChannel } from 'discord.js'
 import { Document } from 'mongoose'
 import IGuild from '../structure/interfaces/db/IGuild'
 
@@ -13,18 +13,18 @@ const event: IEvent = {
 
             if (!data || !data.config.welcomeChannel?.id) return
 
-            const wChannel = member.guild.channels.cache.get(data.config.welcomeChannel.id)
+            const wChannel = member.guild.channels.cache.get(data.config.welcomeChannel.id) as TextChannel
             const wMessage = data.config.welcomeChannel.text
 
-            if (wChannel?.type !== 'GUILD_TEXT') return
+            if (!wChannel) return
 
             const wEmbed = fbEmbed('success', 'New Member!', wMessage.replace(/{member}/g, member.user.tag).replace(/{memberId}/g, member.id).replace(/{server}/, member.guild.name))
-                .setThumbnail(member.user.avatarURL({dynamic: true}) || 'none')
+                .setThumbnail(member.user.avatarURL({dynamic: true}) || member.user.defaultAvatarURL)
                 .setFooter(member.id)
                 .setTimestamp()
 
-            // @ts-ignore
-            wChannel!.send({ embeds: [wEmbed] })
+
+            wChannel.send({ embeds: [wEmbed] })
         })
     }
 }
