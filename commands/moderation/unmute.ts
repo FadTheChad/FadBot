@@ -18,7 +18,7 @@ const command: ICommand = {
             return message.channel.send({ embeds: [errEmbed]})
         }
 
-        const mutedRole = await getMutedRole(message.guild!.id)
+        const mutedRole = await getMutedRole(message.guild!.id, client)
 
         if (!mutedRole) return message.channel.send('No `muted` role found! Please create one!')
 

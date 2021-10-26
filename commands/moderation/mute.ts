@@ -15,7 +15,7 @@ const command: ICommand = {
         //the member that the user is trying to mute
         const target = message.mentions.members!?.first() || await message.guild!.members.fetch(args[0]).catch(e => { const target = undefined })
         
-        const mutedRole = await getMutedRole(message.guild!.id)
+        const mutedRole = await getMutedRole(message.guild!.id, client)
 
         //if the target is not found
         if (!target || !args[0]) return message.channel.send('Please provide a valid user to mute')
