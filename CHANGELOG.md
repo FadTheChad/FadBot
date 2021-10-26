@@ -1,5 +1,12 @@
 # Versions
 
+# 1.1.0 [26/10/21]
+- There are now 2 dbCache methods in the FadBotClient!
+- Added a dbcache devtool!
+- fixed ban and announce command
+- dbCache is now used in all guild set functions!
+- fixed interfaces and types for commands
+
 # 1.0.1 [25/10/21]
 - FadBot's dbCache system now has an interface for the guild section!
 - FadBot's dbCache system is now being tested on the prefix module!
