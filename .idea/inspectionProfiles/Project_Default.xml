@@ -4,7 +4,7 @@
     <inspection_tool class="DuplicatedCode" enabled="true" level="WEAK WARNING" enabled_by_default="true">
       <Languages>
         <language minSize="73" name="JavaScript" />
-        <language minSize="82" name="TypeScript" />
+        <language minSize="110" name="TypeScript" />
       </Languages>
     </inspection_tool>
     <inspection_tool class="ES6ConvertVarToLetConst" enabled="false" level="WEAK WARNING" enabled_by_default="false" />
