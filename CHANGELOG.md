@@ -1,5 +1,9 @@
 # Versions
 
+# 1.2.0 [27/10/21]
+- Added trello command that can send a link to the bot's trello page
+- An -addvc flag in the channels command so that you can create a VoiceChat through the command
+
 # 1.1.0 [26/10/21]
 - There are now 2 dbCache methods in the FadBotClient!
 - Added a dbcache devtool!

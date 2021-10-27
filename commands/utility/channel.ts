@@ -27,6 +27,21 @@ const command: ICommand = {
                     return message.channel.send({embeds: [embed]})
                 })
                 break
+            case '-addvc':
+                const vcName = args.slice(1).join(' ')
+                    
+                if (!vcName) {
+                    const errEmbed = fbEmbed('error', 'VoiceChannel Name Undefined!', 'Please specify a name!')
+    
+                    return message.channel.send({embeds: [errEmbed]})
+                }
+    
+                message.guild!.channels.create(vcName, { type:"GUILD_VOICE" }).then((voiceChannel) => {
+                    const embed = fbEmbed('success', 'Voice Channel Created!', `VC <#${voiceChannel.id}> has been successfully created!`)
+    
+                    return message.channel.send({embeds: [embed]})
+                })
+                break
             case '-delete':
                 const channel = message.mentions.channels.first() || message.guild!.channels.cache.get(args[1])
 
