@@ -58,7 +58,7 @@ If you want to see some ideas/features that the bot could get, check out our [Tr
     "devs": ["devId1", "devId2"],
     "clientId": "Your Client ID Here",
     "guildId": "Your Guild ID Here",
-    "mongoURI": "Your Mongodb Url String Here"
+    "mongoURI": "Your Mongodb Uri String Here"
     ```
    - `token` is the Bot's Token. You can receive it from Discord's Developer Portal.
    - `prefix` is the bot's prefix.
