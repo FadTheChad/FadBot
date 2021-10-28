@@ -1,5 +1,11 @@
 # Versions
 
+# 1.3.0 [28/10/21]
+- dbCache properties are now Maps!
+- Implement the new and improved dbCache system in db utils for guilds!
+- Added a new cache accessing dev tool!
+- Added a bot statistics dev tool!
+
 # 1.2.0 [27/10/21]
 - Added trello command that can send a link to the bot's trello page
 - An -addvc flag in the channels command so that you can create a VoiceChat through the command
