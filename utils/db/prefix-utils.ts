@@ -27,21 +27,20 @@ export const setPrefix = (guildId: Snowflake, newPrefix: string, client: FadBotC
         //if (!client.dbCache.guilds[guildId]) client.dbCache.guilds[guildId] = {}
         client.validateDbCache(client.dbCache.guilds, guildId)
 
-        client.dbCache.guilds[guildId]!.prefix = newPrefix
+        client.dbCache.guilds.get(guildId)!.prefix = newPrefix
     })
 }
 
 export const getPrefix = async (guildId: Snowflake, client: FadBotClient) => {
-    const cachedPrefix = client.dbCache.guilds[guildId]?.prefix
+    const cachedPrefix = client.dbCache.guilds.get(guildId)?.prefix
 
     if (cachedPrefix) return cachedPrefix
 
     const result = await Schema.findOne({ _id: guildId })
 
-    //if (!client.dbCache.guilds[guildId]) client.dbCache.guilds[guildId] = {}
     client.validateDbCache(client.dbCache.guilds, guildId)
 
-    client.dbCache.guilds[guildId]!.prefix = result?.config.prefix || defaultPrefix
+    client.dbCache.guilds.get(guildId)!.prefix = result?.config.prefix || defaultPrefix
 
     return result?.config.prefix
 }
