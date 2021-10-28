@@ -24,12 +24,12 @@ export const setMutedRole = (guildId: Snowflake, mutedRole: Snowflake, client: F
         }
 
         client.validateDbCache(client.dbCache.guilds, guildId)
-        client.dbCache.guilds[guildId]!.mutedRole = mutedRole
+        client.dbCache.guilds.get(guildId)!.mutedRole = mutedRole
     })
 }
 
 export const getMutedRole = async (guildId: Snowflake, client: FadBotClient): Promise<Snowflake | undefined | null> => {
-    let cachedRole = client.dbCache.guilds[guildId]?.mutedRole
+    let cachedRole = client.dbCache.guilds.get(guildId)?.mutedRole
 
     if (cachedRole) return cachedRole
 
