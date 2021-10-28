@@ -29,9 +29,9 @@ export const setLeave = (guildId: Snowflake, channelId: Snowflake, client: FadBo
         }
 
         client.validateDbCache(client.dbCache.guilds, guildId)
-        client.dbCache.guilds[guildId]!.leaveChannel = {
+        client.dbCache.guilds.get(guildId)!.leaveChannel = {
             id: channelId,
-            text: text ?? '{member} has left the server!'
+            text: text || '{member} has left the server!'
         }
     })
 }

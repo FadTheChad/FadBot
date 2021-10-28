@@ -29,7 +29,7 @@ export const setWelcome = (guildId: Snowflake, channelId: Snowflake, client: Fad
         }
 
         client.validateDbCache(client.dbCache.guilds, guildId)
-        client.dbCache.guilds[guildId]!.welcomeChannel = {
+        client.dbCache.guilds.get(guildId)!.welcomeChannel = {
             id: channelId,
             text: text ?? '{member} has joined the server!'
         }
