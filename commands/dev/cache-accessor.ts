@@ -1,4 +1,5 @@
 import ICommand from '../../structure/interfaces/ICommand'
+import convertMapToString from '../../utils/convert-map-to-string'
 
 const command: ICommand = {
     name: 'cacheaccessor',
@@ -12,7 +13,7 @@ const command: ICommand = {
 
         let cachedData = client.dbCache[cacheSection as keyof typeof client['dbCache']]
 
-        message.reply(`${JSON.stringify(cachedData, null, 2).slice(0, 2000)}`)
+        message.channel.send(('```\n' + convertMapToString(cachedData) + '\n```').slice(0, 1980) || 'None')
     }
 }
 
