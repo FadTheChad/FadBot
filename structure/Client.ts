@@ -1,5 +1,5 @@
 // modules
-import { Client, ClientOptions, Collection } from 'discord.js'
+import { Client, ClientOptions, Collection, Snowflake } from 'discord.js'
 import { readdirSync } from 'fs'
 import mongoose, { ConnectOptions } from 'mongoose'
 
@@ -35,27 +35,37 @@ export default class FadBotClient extends Client {
     public loadSlashCommands = slashCmdHandler
     public loadEvents = eventHandler
 
-    // Database Cache, for storing db data locally for better performance
+    /* Database Cache, for storing db data locally for better performance */
     public dbCache: {
-        guilds: { [key: string]: IGuildCache | undefined },
-        users: { [key: string]: {} }
+        guilds: Map<Snowflake, IGuildCache>,
+        users: Map<Snowflake, object>
     } = {
-        guilds: {},
-        users: {}
+        guilds: new Map<Snowflake, IGuildCache>(),
+        users: new Map<Snowflake, object>()
     }
 
-    public validateDbCache(cacheSection: { [key: string]: IGuildCache | undefined }, id: string): void {
-        if (!cacheSection[id]) cacheSection[id] = {}
+    // Searches if the selected cache is valid and creates an empty one if its not for validation
+    public validateDbCache(cacheSection: Map<Snowflake, IGuildCache | object>, id: Snowflake): void {
+        // we want to search for properties from a potential cache key by its ID
+        let cachedData = cacheSection.get(id)
+
+        // if it does not exist, we create an empty one
+        if (!cachedData) cacheSection.set(id, {})
     }
 
-    public clearCache(cacheSection: { [key: string]: IGuildCache | undefined } | 'all') {
+    // clears the cache of the specified section or all
+    public clearCache(cacheSection: Map<Snowflake, IGuildCache | object> | 'all') {
         if (cacheSection === 'all') {
-            for (let key of Object.keys(this.dbCache)) {
-                // @ts-ignore
-                this.dbCache[`${key}`] = {}
+            let self = this
+            let key: keyof typeof self.dbCache
+
+            for (key in this.dbCache) {
+                let cachedData = this.dbCache[key]
+
+                cachedData.clear()
             }
         } else {
-            cacheSection = {}
+            cacheSection.clear()
         }
     }
     // Database Connection Method
