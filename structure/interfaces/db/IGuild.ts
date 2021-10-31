@@ -27,3 +27,5 @@ export interface IGuildCache {
     mutedRole?: string
 }
 
+
+export interface ISettings extends IGuild, Document {}

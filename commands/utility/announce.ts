@@ -31,7 +31,7 @@ const command: ICommand = {
                 message.channel.send({ embeds: [successEmbed] })
             })
             .catch((e: Error) => {
-                const errEmbed = fbEmbed('error', 'Failed To Send Announcement', 'I might not have perms to send msgs there!')
+                const errEmbed = fbEmbed('error', 'Failed To Send Announcement', 'I might not have perms to send messages there!')
 
                 return message.channel.send({ embeds: [errEmbed] })
             })

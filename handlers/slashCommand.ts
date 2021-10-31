@@ -27,15 +27,15 @@ const handler = async (client: FadBotClient, forDeploy: boolean) => {
                 type: 1
             }
 
-            // @ts-ignore
+            // 
             if (!slashCommand.slashRun && !slashCommand.contextRun) continue
 
             slashCommand.data.name = slashCommand.name
 
-            // @ts-ignore
+            // 
             if (!["MESSAGE", "USER", 2, 3].includes(slashCommand.data.type)) slashCommand.data.description = slashCommand.description || ''
 
-            // @ts-ignore
+            // 
             slashCommand.data.options = slashCommand.options
             if (slashCommand.type) slashCommand.data.type = slashCommand.type
 

@@ -8,7 +8,7 @@ import {
     Message,
     User,
     Interaction,
-    TextBasedChannels
+    TextBasedChannels, CommandInteraction
 } from 'discord.js'
 
 import { prefix } from '../config.json'
@@ -34,10 +34,15 @@ const helpManager = {
     },
 
     sendCommandOrCategoryHelp: (client: FadBotClient, location: TextChannel | DMChannel | TextBasedChannels | User, searchedCommand: string, authorId: Snowflake) => {
-        const cmdOrCat = client.commands.get(searchedCommand.toLowerCase()) || client.commands.find(cmd => !!cmd.aliases && cmd.aliases?.includes(searchedCommand.toLowerCase())) || client.categories.find(cat => cat.toLowerCase() === searchedCommand.toLowerCase())
+        const command =
+            client.commands.get(searchedCommand.toLowerCase()) ||
+            client.commands.find(
+                cmd =>
+                    !!cmd.aliases && cmd.aliases?.includes(searchedCommand.toLowerCase()))
+        const category = client.categories[client.categories.indexOf(searchedCommand.toLowerCase())]
 
-        // @ts-ignore
-        if (!cmdOrCat || cmdOrCat?.category == 'dev' || searchedCommand.toLowerCase() === 'dev' || searchedCommand.toLowerCase() === 'context') {
+        // 
+        if ((!command || command.category.includes("dev")) || (!category || ["dev", "context"].includes(searchedCommand))) {
             const errEmbed = new MessageEmbed()
                 .setTitle('Command/Category Not Found')
                 .setDescription('That command/category doesn\'t seem to exist. run `' + prefix + 'help` for a whole list of commands and categories!')
@@ -48,35 +53,35 @@ const helpManager = {
         }
 
         // if the searched word is found to be one of the categories
-        if (typeof cmdOrCat === 'string' && client.categories.includes(cmdOrCat)) {
-            const commands = client.commands.filter(c => c.category === cmdOrCat)
+        if (!command && client.categories.includes(category)) {
+            const commands = client.commands.filter(c => c.category === category)
             
             const embed = new MessageEmbed()
                 .setTitle('Category Found!')
-                .addField('Category', cmdOrCat)
-                .addField(`${cmdOrCat.charAt(0).toUpperCase() + cmdOrCat.slice(1)} Commands`, commands.map(c => `\`${c.name}\``).join(', '))
+                .addField('Category', category)
+                .addField(`${category.charAt(0).toUpperCase() + category.slice(1)} Commands`, commands.map(c => `\`${c.name}\``).join(', '))
                 .setColor(0xFFFF00)
 
             return location.send({ embeds: [embed] })?.catch(() => { })
         } else {
             const embed = new MessageEmbed()
-                .setTitle('Command Found!') // @ts-ignore
-                .addField('Command', cmdOrCat.name)
+                .setTitle('Command Found!') // 
+                .addField('Command', command.name)
                 .setColor(0xFFFF00)
 
-            // @ts-ignore
-            if (cmdOrCat.aliases) embed.addField('Aliases', cmdOrCat.aliases.join(', '))
-            // @ts-ignore
-            if (cmdOrCat.category) embed.addField('Category', cmdOrCat.category)
-            // @ts-ignore
-            if (cmdOrCat.description) embed.addField('Description', cmdOrCat.description)
-            // @ts-ignore
-            if (cmdOrCat.usage) embed.addField('Usage', '`' + prefix + cmdOrCat.name + ' ' + cmdOrCat.usage + '`')
+            // 
+            if (command.aliases) embed.addField('Aliases', command.aliases.join(', '))
+            // 
+            if (command.category) embed.addField('Category', command.category)
+            // 
+            if (command.description) embed.addField('Description', command.description)
+            // 
+            if (command.usage) embed.addField('Usage', '`' + prefix + command.name + ' ' + command.usage + '`')
 
-            // @ts-ignore
-            embed.addField('Permissions', cmdOrCat.permissions ? (typeof cmdOrCat.permissions === 'string' ? cmdOrCat.permissions : cmdOrCat.permissions.join(', ')) : 'Everyone')
-            // @ts-ignore
-            embed.setFooter(`${authorId}${cmdOrCat.usage ? ' | <> - required, [] - optional' : ''}`)
+            // 
+            embed.addField('Permissions', command.permissions ? (typeof command.permissions === 'string' ? command.permissions : command.permissions.join(', ')) : 'Everyone')
+            // 
+            embed.setFooter(`${authorId}${command.usage ? ' | <> - required, [] - optional' : ''}`)
 
             return location.send({embeds: [embed]})?.catch(() => { })
         }
@@ -141,7 +146,8 @@ const helpManager = {
             return row
         }
 
-        let initialMessage = await location.send({ embeds: [fbEmbed('success', 'Categories Loaded!')], components: [getHelpRow(false)] }).catch(() => { let initialMessage })
+        let initialMessage: Interaction | Message<boolean> | undefined;
+        await location.send({ embeds: [fbEmbed('success', 'Categories Loaded!')], components: [getHelpRow(false)] }).then((message) => initialMessage = message).catch(() => initialMessage = undefined);
 
         if (!initialMessage) return
 
@@ -161,8 +167,8 @@ const helpManager = {
             const [category] = i.values
             const ddEmbed = fbEmbed('success', `${category.charAt(0).toUpperCase() + category.slice(1)} Commands`, client.commands.filter(c => c.category == category).map(c => `\`${c.name}\``).join(', '))
 
-            // @ts-ignore
-            isSlash ? initialMessage.editReply({ embeds: [ddEmbed] }) : initialMessage.edit({ embeds: [ddEmbed], components: [getHelpRow(true)] })
+            // 
+            isSlash ? initialMessage!.editReply({ embeds: [ddEmbed] }) : initialMessage!.edit({ embeds: [ddEmbed], components: [getHelpRow(true)] })
         })
             .catch(err => console.log(err))
     }

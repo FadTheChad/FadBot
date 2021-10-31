@@ -13,7 +13,7 @@ const command: ICommand = {
         let amount: string = args[0]
 
         if (!amount) {
-            const embed = fbEmbed('success', 'Slowmode Found!') // @ts-ignore
+            const embed = fbEmbed('success', 'Slowmode Found!') // 
                 .addField('Current Slowmode', message.channel.rateLimitPerUser !== 0 ? `\`${message.channel.rateLimitPerUser.toString()}\` seconds` : 'None')
 
             message.channel.send({ embeds: [embed] })
@@ -29,11 +29,11 @@ const command: ICommand = {
                 return message.channel.send({ embeds: [errEmbed]})
             }
 
-            const embed = fbEmbed('success', 'Slowmode Successfully Set!') // @ts-ignore
+            const embed = fbEmbed('success', 'Slowmode Successfully Set!') // 
                 .addField('Initial Slowmode', message.channel.rateLimitPerUser !== 0 ? `\`${message.channel.rateLimitPerUser.toString()}\` seconds` : 'None')
                 .addField('Final Slowmode', `\`${amount}\` seconds`)
 
-            // @ts-ignore
+            // 
             message.channel.setRateLimitPerUser(parseInt(amount)).then(() => message.channel.send({ embeds: [embed] }))
         }
     }

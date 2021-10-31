@@ -9,15 +9,15 @@ const event: IEvent = {
         if (interaction.isCommand()) {
             const slashCommand = client.slashCommands.get(interaction.commandName)
 
-            // @ts-ignore
+            // 
             if (!slashCommand || !slashCommand?.slashRun) return
 
-            // @ts-ignore
+            // 
             if (slashCommand.permissions) {
-                // @ts-ignore
+                // 
                 let { permissions } = slashCommand
 
-                // @ts-ignore
+                // 
                 if ((permissions === 'BOT_DEV' || slashCommand.category === 'dev') && !devs.includes(interaction.user.id)) return
                 
                 if (typeof permissions === 'string') permissions = [permissions]
@@ -30,13 +30,13 @@ const event: IEvent = {
                     const member = interaction.member || await interaction.guild?.members.fetch(interaction.user.id)
                     const botMember = interaction.guild?.me || await interaction.guild?.members.fetch(client.user!.id)
 
-                    // @ts-ignore
+                    // 
                     if (!member!.permissions.has(permission)) {
                         permErrEmbed.setDescription('You don\'t have perms to run this command!')
                         return interaction.reply({ embeds: [permErrEmbed], ephemeral: true })
                     }
 
-                    // @ts-ignore
+                    // 
                     if (!botMember!.permissions.has(permission)) {
                         permErrEmbed.setDescription('I don\'t have perms to run this command!')
                         return interaction.reply({ embeds: [permErrEmbed], ephemeral: true })
@@ -46,7 +46,7 @@ const event: IEvent = {
             }
 
             try {
-                // @ts-ignore
+                // 
                 await slashCommand.slashRun!(client, interaction)
             } catch (err) {
                 console.error(err)
@@ -67,7 +67,7 @@ const event: IEvent = {
             if (!contextMenu) return
 
             try {
-                // @ts-ignore
+                // 
                 await contextMenu.contextRun(client, interaction)
             } catch (err) {
                 console.error(err)

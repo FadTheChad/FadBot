@@ -3,7 +3,7 @@ const list: string[] = [
     'I don\'t think i am allowed to tell you that. Sorry.',
     'Hell to the yes.',
     'What? N-No.',
-    'Okay there miiight be a *slight* possibility.',
+    'Okay there might be a *slight* possibility.',
     'I guess yeah. Ehhhh don\'t count on it',
     'I.. don\'t know why would you think that i know about this. I\'m just a discord bot.',
     'Perhaps.',

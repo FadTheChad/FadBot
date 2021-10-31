@@ -27,7 +27,7 @@ const command: ICommand = {
         
         const initialInteraction = await interaction.editReply('Pinging...')
 
-        // @ts-ignore
+        // 
         const latency = initialInteraction.createdTimestamp - interaction.createdTimestamp
         const apiLatency = Math.round(client.ws.ping)
 

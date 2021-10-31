@@ -19,13 +19,15 @@ const command: ICommand = {
                     return message.channel.send({embeds: [errEmbed]})
                 }
 
-                message.guild!.channels.create(channelName, { // @ts-ignore
-                    parent: message.channel.parent
-                }).then((channel) => {
-                    const embed = fbEmbed('success', 'Channel Created!', `Channel <#${channel.id}> has been successfully created!`)
+                if (!(message.channel.partial)) {
+                    message.guild!.channels.create(channelName, { //
+                        parent: message.channel.parent
+                    }).then((channel) => {
+                        const embed = fbEmbed('success', 'Channel Created!', `Channel <#${channel.id}> has been successfully created!`)
 
-                    return message.channel.send({embeds: [embed]})
-                })
+                        return message.channel.send({embeds: [embed]})
+                    })
+                }
                 break
             case '-addvc':
                 const vcName = args.slice(1).join(' ')
@@ -51,7 +53,7 @@ const command: ICommand = {
                     return message.channel.send({embeds: [errEmbed]})
                 }
 
-                // @ts-ignore
+                // 
                 const embed = fbEmbed('success', 'Channel Deleted!', `Channel \`${channel.name}\` has been successfully deleted!`)
 
                 channel.delete().then(() => message.channel.send({embeds: [embed]}))

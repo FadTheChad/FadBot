@@ -30,7 +30,7 @@ export default interface ICommand {
     data?: IData,
     name: string,
     description?: string,
-    aliases?: string[] | string,
+    aliases?: string[],
     type?: number
     options?: any[]
     usage?: string,
