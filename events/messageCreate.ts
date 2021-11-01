@@ -43,13 +43,11 @@ const event: IEvent = {
                 const member = message.member || await message.guild?.members.fetch(message.author.id)
                 const botMember = message.guild?.me || await message.guild?.members.fetch(client.user!.id)
 
-                // @ts-ignore
                 if (!member!.permissions.has(permission)) {
                     permErrEmbed.setDescription('You don\'t have perms to run this command!')
                     return message.channel.send({embeds: [permErrEmbed]})
                 }
-                
-                // @ts-ignore
+
                 if (!botMember!.permissions.has(permission)) {
                     permErrEmbed.setDescription('I don\'t have perms to run this command!')
                     return message.channel.send({embeds: [permErrEmbed]})

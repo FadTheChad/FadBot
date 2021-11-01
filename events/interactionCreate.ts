@@ -1,7 +1,9 @@
 import { devs } from '../config.json'
 import fbEmbed from '../utils/fbEmbed-utils'
 import IEvent from '../structure/interfaces/IEvent'
-import { Interaction } from 'discord.js'
+import { Interaction, Permissions } from 'discord.js'
+import ICommand from '../structure/interfaces/ICommand'
+import IContextCommand from '../structure/interfaces/IContextCommand'
 
 const event: IEvent = {
     name: 'interactionCreate',
@@ -9,19 +11,18 @@ const event: IEvent = {
         if (interaction.isCommand()) {
             const slashCommand = client.slashCommands.get(interaction.commandName)
 
-            // @ts-ignore
-            if (!slashCommand || !slashCommand?.slashRun) return
+            if (!slashCommand || !(slashCommand as ICommand)?.slashRun) return
 
-            // @ts-ignore
-            if (slashCommand.permissions) {
-                // @ts-ignore
-                let { permissions } = slashCommand
+            if ((slashCommand as ICommand).permissions) {
 
-                // @ts-ignore
-                if ((permissions === 'BOT_DEV' || slashCommand.category === 'dev') && !devs.includes(interaction.user.id)) return
+                let { permissions } = slashCommand as ICommand
+
+                if ((permissions === 'BOT_DEV' || (slashCommand as ICommand).category === 'dev') && !devs.includes(interaction.user.id)) return
                 
                 if (typeof permissions === 'string') permissions = [permissions]
-            
+
+                if (!permissions) permissions = []
+
                 for (const permission of permissions)  {
                     const permErrEmbed = fbEmbed('error', 'Invalid Permissions!')
 
@@ -30,13 +31,11 @@ const event: IEvent = {
                     const member = interaction.member || await interaction.guild?.members.fetch(interaction.user.id)
                     const botMember = interaction.guild?.me || await interaction.guild?.members.fetch(client.user!.id)
 
-                    // @ts-ignore
-                    if (!member!.permissions.has(permission)) {
+                    if (!(member!.permissions as Readonly<Permissions>).has(permission)) {
                         permErrEmbed.setDescription('You don\'t have perms to run this command!')
                         return interaction.reply({ embeds: [permErrEmbed], ephemeral: true })
                     }
 
-                    // @ts-ignore
                     if (!botMember!.permissions.has(permission)) {
                         permErrEmbed.setDescription('I don\'t have perms to run this command!')
                         return interaction.reply({ embeds: [permErrEmbed], ephemeral: true })
@@ -46,8 +45,7 @@ const event: IEvent = {
             }
 
             try {
-                // @ts-ignore
-                await slashCommand.slashRun!(client, interaction)
+                await (slashCommand as ICommand).slashRun!(client, interaction)
             } catch (err) {
                 console.error(err)
 
@@ -67,8 +65,7 @@ const event: IEvent = {
             if (!contextMenu) return
 
             try {
-                // @ts-ignore
-                await contextMenu.contextRun(client, interaction)
+                await (contextMenu as IContextCommand).contextRun!(client, interaction)
             } catch (err) {
                 console.error(err)
 
