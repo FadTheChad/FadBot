@@ -22,27 +22,16 @@ const handler = async (client: FadBotClient, forDeploy: boolean) => {
 
             const slashCommand: ICommand | IContextCommand = req.default
 
-            slashCommand.data = {
-                name: '',
-                type: 1
-            }
+            if (!(slashCommand as ICommand).slashRun && !(slashCommand as IContextCommand).contextRun) continue
 
-            // @ts-ignore
-            if (!slashCommand.slashRun && !slashCommand.contextRun) continue
+            slashCommand.type ??= 1
 
-            slashCommand.data.name = slashCommand.name
+            if (["MESSAGE", "USER", 2, 3].includes(slashCommand.type)) delete (slashCommand as ICommand).description
 
-            // @ts-ignore
-            if (!["MESSAGE", "USER", 2, 3].includes(slashCommand.data.type)) slashCommand.data.description = slashCommand.description || ''
+            if (!forDeploy) client.slashCommands.set(slashCommand.name, slashCommand)
+            else arrayOfSlashCommands.push(slashCommand)
 
-            // @ts-ignore
-            slashCommand.data.options = slashCommand.options
-            if (slashCommand.type) slashCommand.data.type = slashCommand.type
-
-            if (!forDeploy) client.slashCommands.set(slashCommand.data.name, slashCommand)
-            else arrayOfSlashCommands.push(slashCommand.data)
-
-            console.log(`\t${slashCommand.data.name} has been ${forDeploy ? 'deployed' : 'loaded'} as a Slash Command!`)
+            console.log(`\t${slashCommand.name} has been ${forDeploy ? 'deployed' : 'loaded'} as a Slash Command!`)
         }
     }
         
@@ -50,7 +39,11 @@ const handler = async (client: FadBotClient, forDeploy: boolean) => {
         try {
             await rest.put(
                 Routes.applicationGuildCommands(clientId, guildId),
-                { body: arrayOfSlashCommands }
+                { body: arrayOfSlashCommands.map(c => {
+                    delete (c as ICommand).permissions
+
+                    return c
+                }) }
             )
 
             console.log('Successfully registered Slash Commands!')
