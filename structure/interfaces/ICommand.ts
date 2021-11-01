@@ -5,14 +5,6 @@ import { readdirSync } from 'fs'
 
 const categories = <const>[...readdirSync('./commands')]
 
-
-interface IData {
-    name: string,
-    description?: string,
-    options?: ApplicationCommandOption[],
-    type: number
-}
-
 type Run = (
     client: FadBotClient,
     message: Message,
@@ -27,7 +19,6 @@ type SlashRun = (
 type Category = typeof categories[number]
 
 export default interface ICommand {
-    data?: IData,
     name: string,
     description?: string,
     aliases?: string[] | string,
