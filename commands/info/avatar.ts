@@ -14,7 +14,7 @@ const command: ICommand = {
         if (!args[0]) member = undefined
 
 
-        const embed = fbEmbed('success', 'Avatar Found!', `Heres the avatar  <@${member ? member.id : message.author.id}> !`)
+        const embed = fbEmbed('success', 'Avatar Found!', `Here's the avatar  <@${member ? member.id : message.author.id}> !`)
             .setImage((member) ? (member.user.displayAvatarURL({ dynamic: true })) : (message.author.displayAvatarURL({ dynamic: true })))
 
         message.channel.send({ embeds: [embed] })

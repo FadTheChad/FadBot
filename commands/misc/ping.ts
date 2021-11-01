@@ -1,4 +1,4 @@
-import { MessageEmbed } from 'discord.js'
+import { Message, MessageEmbed } from 'discord.js'
 import fbEmbed from '../../utils/fbEmbed-utils'
 import ICommand from "../../structure/interfaces/ICommand";
 
@@ -27,8 +27,7 @@ const command: ICommand = {
         
         const initialInteraction = await interaction.editReply('Pinging...')
 
-        // @ts-ignore
-        const latency = initialInteraction.createdTimestamp - interaction.createdTimestamp
+        const latency = (initialInteraction as Message).createdTimestamp - interaction.createdTimestamp
         const apiLatency = Math.round(client.ws.ping)
 
         const embed = fbEmbed('success', 'Pong!')

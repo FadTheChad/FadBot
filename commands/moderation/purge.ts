@@ -1,5 +1,6 @@
 import fbEmbed from "../../utils/fbEmbed-utils"
 import ICommand from '../../structure/interfaces/ICommand'
+import { TextChannel } from 'discord.js'
 
 const command: ICommand = {
     name: 'purge',
@@ -30,8 +31,7 @@ const command: ICommand = {
         }
 
         // if you wanted to delete 1 message, it would delete the msg where you ran this command, hence we do +1
-        // @ts-ignore
-        message.channel.bulkDelete(parseInt(count) + 1).then(() => {
+        (message.channel as TextChannel).bulkDelete(parseInt(count) + 1).then(() => {
             const embed = fbEmbed('success', 'Purged Successfully!', `Successfully purged ${count} message${parseInt(count) !== 1 ? 's' : ''}!`)
 
             message.channel.send({ embeds: [embed] }).then(msg => setTimeout(() => msg.delete(), 3000))

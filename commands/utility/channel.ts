@@ -1,5 +1,6 @@
 import fbEmbed from '../../utils/fbEmbed-utils'
 import ICommand from '../../structure/interfaces/ICommand'
+import { TextChannel, VoiceChannel } from 'discord.js'
 
 const command: ICommand = {
     name: 'channel',
@@ -19,8 +20,8 @@ const command: ICommand = {
                     return message.channel.send({embeds: [errEmbed]})
                 }
 
-                message.guild!.channels.create(channelName, { // @ts-ignore
-                    parent: message.channel.parent
+                message.guild!.channels.create(channelName, {
+                    parent: (message.channel as TextChannel).parent ?? undefined
                 }).then((channel) => {
                     const embed = fbEmbed('success', 'Channel Created!', `Channel <#${channel.id}> has been successfully created!`)
 
@@ -51,8 +52,7 @@ const command: ICommand = {
                     return message.channel.send({embeds: [errEmbed]})
                 }
 
-                // @ts-ignore
-                const embed = fbEmbed('success', 'Channel Deleted!', `Channel \`${channel.name}\` has been successfully deleted!`)
+                const embed = fbEmbed('success', 'Channel Deleted!', `Channel \`${(channel as TextChannel | VoiceChannel).name}\` has been successfully deleted!`)
 
                 channel.delete().then(() => message.channel.send({embeds: [embed]}))
                 break

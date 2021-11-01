@@ -1,4 +1,4 @@
-import { MessageEmbed } from "discord.js"
+import { MessageEmbed, TextChannel } from 'discord.js'
 import fbEmbed from "../../utils/fbEmbed-utils"
 import ICommand from '../../structure/interfaces/ICommand'
 
@@ -13,8 +13,8 @@ const command: ICommand = {
         let amount: string = args[0]
 
         if (!amount) {
-            const embed = fbEmbed('success', 'Slowmode Found!') // @ts-ignore
-                .addField('Current Slowmode', message.channel.rateLimitPerUser !== 0 ? `\`${message.channel.rateLimitPerUser.toString()}\` seconds` : 'None')
+            const embed = fbEmbed('success', 'Slowmode Found!')
+                .addField('Current Slowmode', (message.channel as TextChannel).rateLimitPerUser !== 0 ? `\`${(message.channel as TextChannel).rateLimitPerUser.toString()}\` seconds` : 'None')
 
             message.channel.send({ embeds: [embed] })
         } else {
@@ -29,12 +29,11 @@ const command: ICommand = {
                 return message.channel.send({ embeds: [errEmbed]})
             }
 
-            const embed = fbEmbed('success', 'Slowmode Successfully Set!') // @ts-ignore
-                .addField('Initial Slowmode', message.channel.rateLimitPerUser !== 0 ? `\`${message.channel.rateLimitPerUser.toString()}\` seconds` : 'None')
-                .addField('Final Slowmode', `\`${amount}\` seconds`)
+            const embed = fbEmbed('success', 'Slowmode Successfully Set!')
+                .addField('Initial Slowmode', (message.channel as TextChannel).rateLimitPerUser !== 0 ? `\`${(message.channel as TextChannel).rateLimitPerUser.toString()}\` seconds` : 'None')
+                .addField('Final Slowmode', `\`${amount}\` seconds`);
 
-            // @ts-ignore
-            message.channel.setRateLimitPerUser(parseInt(amount)).then(() => message.channel.send({ embeds: [embed] }))
+            (message.channel as TextChannel).setRateLimitPerUser(parseInt(amount)).then(() => message.channel.send({ embeds: [embed] }))
         }
     }
 }
