@@ -6,7 +6,10 @@ import mongoose, { ConnectOptions } from 'mongoose'
 // interfaces and configuration
 import ICommand from "./interfaces/ICommand"
 import IContextCommand from './interfaces/IContextCommand'
-import config from '../config.json'
+import IConfig from './interfaces/IConfig'
+
+import _config from '../config.json'
+const config: IConfig = _config
 
 // handlers/loaders
 import cmdHandler from '../handlers/command'
@@ -69,7 +72,7 @@ export default class FadBotClient extends Client {
         }
     }
     // Database Connection Method
-    public connectToDb(connectString: string): void {
+    public connectToDb(): void {
         mongoose.connect(config.mongoURI, {
             useNewUrlParser: true,
             useUnifiedTopology: true
@@ -81,12 +84,14 @@ export default class FadBotClient extends Client {
     }
 
     // Initializer
-    public async start(token: string, connectionString: string) {
+    public async start(token: string) {
+        console.log('Starting bot...')
+
         this.loadCommands(this)
         await this.loadSlashCommands(this, false)
         this.loadEvents(this)
 
-        this.connectToDb(connectionString)
+        this.connectToDb()
 
         this.login(token)
     }
