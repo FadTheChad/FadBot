@@ -29,3 +29,9 @@ export const isBlacklisted = async (userId: Snowflake): Promise<boolean> => {
 
     return result?.blacklisted
 }
+
+export const getBList = async () => {
+    let list = await Schema.find({ blacklisted: true })
+
+    return list.map(user => user.id)
+}

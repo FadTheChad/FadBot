@@ -1,5 +1,5 @@
 import fbEmbed  from '../../utils/fbEmbed-utils'
-import { setBlacklisted, isBlacklisted } from '../../utils/db/blacklisted-user-utils'
+import { setBlacklisted, isBlacklisted, getBList } from '../../utils/db/blacklisted-user-utils'
 import ICommand from '../../structure/interfaces/ICommand'
 
 const command: ICommand = {
@@ -72,6 +72,10 @@ const command: ICommand = {
                 })
 
                 break
+            case '-list':
+                const embed = fbEmbed('success', 'Blacklisted Users', (await getBList())?.join('\n') ?? 'None')
+
+                return message.channel.send({ embeds: [embed] })
             default:
                 return message.channel.send({ embeds: [fbEmbed('error', 'Invalid Flag!' ,'Please use a valid flag! (`-add`, `remove`)')] })
         }
