@@ -4,4 +4,4 @@ import options from './utils/options'
 
 const client = new FadBotClient(options)
 
-client.start(config.token, config.mongoURI)
+client.start(config.token)
