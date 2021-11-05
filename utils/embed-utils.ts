@@ -12,6 +12,8 @@ const checkEmbed = (embed: MessageEmbed): string | null => {
 
     if (embed.fields?.length > 25) return 'Embed fields cannot be more than 25'
 
+    if (!embed.fields) embed.fields = []
+
     for (let field of embed.fields) {
         if (field.name?.length > 256) return 'Embed field name cannot be more than 256 characters'
         totalLength += field.name?.length
