@@ -17,13 +17,13 @@ const command: ICommand = {
             case '-add':
                 if (!user || !args[1]) return message.channel.send({ embeds: [errEmbed] })
 
-                if (await isBlacklisted(user.id)) {
+                if (await isBlacklisted(user.id, client)) {
                     let embed = fbEmbed('error', 'User Already Blacklisted!', 'This user is already blacklisted!')
 
                     return message.channel.send({ embeds: [embed] })
                 }
 
-                setBlacklisted(user.id, true)
+                setBlacklisted(user.id, true, client)
 
                 const baseEmbed = fbEmbed('success', 'User Successfully Blacklisted!',`User <@${user.id}> has successfully been stinky'fied!`)
 
@@ -46,13 +46,13 @@ const command: ICommand = {
             case '-remove':
                 if (!user || !args[1]) return message.channel.send({ embeds: [errEmbed] })
 
-                if (!(await isBlacklisted(user.id))) {
+                if (!(await isBlacklisted(user.id, client))) {
                     let embed = fbEmbed('error', 'User Not Blacklisted!', 'This user is not blacklisted!')
 
                     return message.channel.send({ embeds: [embed] })
                 }
 
-                setBlacklisted(user.id, false)
+                setBlacklisted(user.id, false, client)
 
                 const wlBaseEmbed = fbEmbed('success', 'User Successfully Whitelisted!',`User <@${user.id}> has successfully been unstinky'fied!`)
 
@@ -73,7 +73,7 @@ const command: ICommand = {
 
                 break
             case '-list':
-                const embed = fbEmbed('success', 'Blacklisted Users', (await getBList())?.join('\n') ?? 'None')
+                const embed = fbEmbed('success', 'Blacklisted Users', (await getBList(client))?.join('\n') ?? 'None')
 
                 return message.channel.send({ embeds: [embed] })
             default:
