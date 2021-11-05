@@ -1,5 +1,5 @@
 import { MessageEmbed } from "discord.js"
-import ms from 'ms'
+import ms, { StringValue } from 'ms'
 import fbEmbed from '../../utils/fbEmbed-utils'
 import { getMutedRole } from '../../utils/db/muted-role-utils'
 import ICommand from '../../structure/interfaces/ICommand'
@@ -32,33 +32,35 @@ const command: ICommand = {
 
         if (!!target.roles.cache.get(mutedRole)) return message.channel.send('This user is already muted!')
 
-        let time = args[1] ? ms(parseInt(args[1])) : null
+        let time = (args[1] && !isNaN(parseInt(args[1]))) ? ms((args[1] as StringValue) || 0) : null
 
-        let reason = (!time || isNaN(parseInt(time)) ? args.slice(1).join(' ') : args.slice(2).join(' ')) || 'No Reason Specified'
+        let reason = (!time || isNaN(time) ? args.slice(1).join(' ') : args.slice(2).join(' ')) || 'No Reason Specified'
 
         const muteEmbed = fbEmbed('success', 'User Muted!')
             .addField('Muted User', `${target.user.tag} (${target.id})`)
             .addField('Reason', reason)
             .setColor(0xFFFF00)
-        
+
         const muteUserEmbed =  new MessageEmbed()
             .setTitle('Muted!')
             .setDescription(`You have been muted from ${message.guild!.name}!`)
             .addField('Reason', reason)
             .setColor(0xFFFF00)
 
-        if (!!time && !isNaN(parseInt(time))) {
-            muteEmbed.addField('Duration', `${ms(parseInt(time))}`)
-            muteUserEmbed.addField('Duration', `${ms(parseInt(time))}`)
+        if (!!time && !isNaN(time)) {
+            muteEmbed.addField('Duration', `${ms(time)}`)
+            muteUserEmbed.addField('Duration', `${ms(time)}`)
         }
 
         target.roles.add(mutedRole, reason)
             .then(() => message.channel.send({ embeds: [muteEmbed] }))
             .catch(e => {
+                console.log(e)
                 return message.channel.send({ embeds: [fbEmbed('error', 'Unable to mute user!', 'Might be because of member having higher permissions!')] })
             })
 
-        if (!!time && !isNaN(parseInt(time))) {
+        console.log()
+        if (!!time && !isNaN(time)) {
             setTimeout(() => {
                 if (target.roles.cache.get(mutedRole)) {
                     target.roles.remove(mutedRole).then(() => {
@@ -67,7 +69,7 @@ const command: ICommand = {
                     }).catch(e => console.log('cannot unmute this member'))
 
                 }
-            }, parseInt(time))
+            }, time)
         }
     }
 }

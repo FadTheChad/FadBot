@@ -27,7 +27,7 @@ const command: ICommand = {
 
         let time = args[1] ? ms(args[1] as StringValue) : null
 
-        let reason = (!time || (isNaN(time)) ? args.slice(1).join(' ') : args.slice(2).join(' ')) || 'No Reason Specified'
+        let reason = (!time || isNaN(time) ? args.slice(1).join(' ') : args.slice(2).join(' ')) || 'No Reason Specified'
 
         const banEmbed = fbEmbed('success', 'User Banned!')
             .addField('Banned User', `${target.user.tag} (${target.id})`)
