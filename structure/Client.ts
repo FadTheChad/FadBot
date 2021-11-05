@@ -18,6 +18,7 @@ import eventHandler from '../handlers/event'
 
 // dbCache Utils/Interfaces
 import { IGuildCache } from './interfaces/db/IGuild'
+import { IUserCache } from './interfaces/db/IUser'
 
 /**
  * @description - The Custom Client Of FadBot
@@ -41,10 +42,10 @@ export default class FadBotClient extends Client {
     /* Database Cache, for storing db data locally for better performance */
     public dbCache: {
         guilds: Map<Snowflake, IGuildCache>,
-        users: Map<Snowflake, object>
+        users: Map<Snowflake, IUserCache>
     } = {
         guilds: new Map<Snowflake, IGuildCache>(),
-        users: new Map<Snowflake, object>()
+        users: new Map<Snowflake, IUserCache>()
     }
 
     // Searches if the selected cache is valid and creates an empty one if its not for validation
@@ -57,7 +58,7 @@ export default class FadBotClient extends Client {
     }
 
     // clears the cache of the specified section or all
-    public clearCache(cacheSection: Map<Snowflake, IGuildCache | object> | 'all') {
+    public clearCache(cacheSection: Map<Snowflake, IGuildCache | IUserCache> | 'all') {
         if (cacheSection === 'all') {
             let self = this
             let key: keyof typeof self.dbCache
