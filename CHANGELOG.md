@@ -1,6 +1,12 @@
 # Versions
 
-# 1.4.0 [11/1/21] [Ram/Xapu]
+# 1.5.0 [6/11/21]
+- User Cache now has its own interface in the Client!
+- Added use of User dbCache in the UBL Module!
+- Added a BLList dev feature!
+- Fixed ban and mute cmd timer
+
+# 1.4.0 [1/11/21] [Ram/Xapu]
 - Added a new decache command which now clears cache of the guild
 - Changed Command Interfaces and removed the data property
 - Fixed events
