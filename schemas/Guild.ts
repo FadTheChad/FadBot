@@ -16,9 +16,11 @@ const GuildSchema = new Schema({
         },
         mutedRole: String,
         blacklistedWords: {
-            0: [String],
-            1: [String],
-            2: [String]
+            type: [{
+                word: String,
+                level: Number
+            }],
+            default: []
         }
     }
 })
