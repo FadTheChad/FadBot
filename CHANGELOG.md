@@ -1,5 +1,10 @@
 # Versions
 
+# 1.6.0 [8/11/21]
+- Upgraded a dummy blacklistWords guild module for later use!
+- Added an interface for blacklistedWords!
+- Added comments in 2 files that reveal what I had thought of, when writing these files.
+
 # 1.5.0 [6/11/21]
 - User Cache now has its own interface in the Client!
 - Added use of User dbCache in the UBL Module!
