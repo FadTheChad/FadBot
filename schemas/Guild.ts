@@ -12,7 +12,7 @@ const GuildSchema = new Schema({
         },
         leaveChannel: {
             id: { type: String },
-            text: {type: String, default: '{member} has left the server!'}
+            text: { type: String, default: '{member} has left the server!' }
         },
         mutedRole: String,
         blacklistedWords: {
