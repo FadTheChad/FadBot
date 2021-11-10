@@ -1,5 +1,11 @@
 import fbEmbed from '../../utils/fbEmbed-utils'
 import ICommand from '../../structure/interfaces/ICommand'
+import {
+    addBlacklistedWord,
+    censorBLWord,
+    getBlacklistedWords,
+    removeBlacklistedWord
+} from '../../utils/db/blacklisted-word-utils'
 
 const command: ICommand = {
     name: 'blacklist',
@@ -8,10 +14,33 @@ const command: ICommand = {
     usage: '<level: {0, 1, 2}> <word(s)>',
     category: 'automoderation',
     permissions: 'BAN_MEMBERS',
-    run (client, message, args) {
-        const soon = fbEmbed('success', 'Soon! ;)')
+    async run(client, message, args) {
+        switch (args[0]) {
+            case '-add':
+                let addedWord = args[2]
+                let level = parseInt(args[1])
 
-        return message.channel.send({ embeds: [soon] })
+                if (!addedWord || level == undefined || isNaN(level) || level < 0 || level > 3) return message.reply('dumb')
+
+                addBlacklistedWord(message.guild!.id, addedWord, level, client)
+                return message.reply('yay')
+
+            case '-rem':
+            case '-del':
+            case '-remove':
+            case '-delete':
+                let deletedWord = args[1]
+
+                if (!deletedWord) return message.reply('dumb')
+
+                removeBlacklistedWord(message.guild!.id, deletedWord, client)
+                return message.reply('yaaay')
+
+            case '-list':
+                let blacklistedWords = await getBlacklistedWords(message.guild!.id, client)
+
+                message.reply(blacklistedWords.map(element => censorBLWord(element.word)).join('\n') || 'None lmao')
+        }
     }
 }
 
