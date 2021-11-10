@@ -1,5 +1,10 @@
 # Versions
 
+# 1.7.0 [10/11/21]
+- Blacklist cmd now works! (doesn't listen for messages yet)
+- Updated dbCache for blacklistWords module
+- Cleaned code in Guild Schema
+
 # 1.6.0 [8/11/21]
 - Upgraded a dummy blacklistWords guild module for later use!
 - Added an interface for blacklistedWords!
