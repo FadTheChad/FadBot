@@ -20,6 +20,8 @@ Here are some things that you can expect from the bot:
 ## Built With
 * [discord.js](https://github.com/discordjs/discord.js)
 * typescript (using ts-node)
+* FadBotClient (FadBot's Custom Client)
+* dbCache (FadBot's Custom dbCache Maps)
 
 ## Devs
 * Fad The Chad
