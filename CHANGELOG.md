@@ -1,5 +1,9 @@
 # Versions
 
+# 1.8.0 [23/11/21]
+- FBLogger is here!
+- Added a displayResult function which displays the command categories in a table
+
 # 1.7.0 [10/11/21]
 - Blacklist cmd now works! (doesn't listen for messages yet)
 - Updated dbCache for blacklistWords module

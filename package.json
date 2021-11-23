@@ -1,6 +1,6 @@
 {
   "name": "fadbot",
-  "version": "1.7.0",
+  "version": "1.8.0",
   "description": "",
   "main": "index.ts",
   "scripts": {
@@ -13,11 +13,13 @@
   "dependencies": {
     "@discordjs/rest": "^0.1.0-canary.0",
     "@types/node": "^16.11.4",
+    "chalk": "^4.1.2",
     "discord-api-types": "^0.23.1",
     "discord.js": "^13.1.0",
     "module-alias": "^2.2.2",
     "mongoose": "^6.0.8",
-    "ms": "^3.0.0-canary.1"
+    "ms": "^3.0.0-canary.1",
+    "table": "^6.7.3"
   },
   "_moduleAliases": {
     "@commands": "./commands"
