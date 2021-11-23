@@ -20,6 +20,10 @@ import eventHandler from '../handlers/event'
 import { IGuildCache } from './interfaces/db/IGuild'
 import { IUserCache } from './interfaces/db/IUser'
 
+// Displays Bot Data
+import displayResult from './client-utils/displayResult'
+import FBLogger from './client-utils/FBLogger'
+
 /**
  * @description - The Custom Client Of FadBot
  * @author - Fad F
@@ -39,7 +43,17 @@ export default class FadBotClient extends Client {
     public loadSlashCommands = slashCmdHandler
     public loadEvents = eventHandler
 
-    /* Database Cache, for storing db data locally for better performance */
+    public displayResult = displayResult
+
+    // Custom Logging Util For FadBot (Inspired By 3vil's client.log)
+    public fbLogger = new FBLogger({
+        primary: [255, 255, 0],
+        secondary: [0, 0, 0]
+    })
+
+    /*
+      Database Cache, for storing db data locally for better performance
+    */
     public dbCache: {
         guilds: Map<Snowflake, IGuildCache>,
         users: Map<Snowflake, IUserCache>
@@ -72,25 +86,28 @@ export default class FadBotClient extends Client {
             cacheSection.clear()
         }
     }
+
     // Database Connection Method
     public connectToDb(): void {
         mongoose.connect(config.mongoURI, {
             useNewUrlParser: true,
             useUnifiedTopology: true
         } as ConnectOptions).then(() => {
-            console.log('Connected to MongoDB!')
+            this.fbLogger.log('MongooseConnection', 'Connected to MongoDB!\n')
         }).catch(e => {
-            console.log(`Could not connect to MongoDB!\nError: ${e}`)
+            this.fbLogger.error(`Could not connect to MongoDB!\nError: ${e}`)
         })
     }
 
     // Initializer
     public async start(token: string) {
-        console.log('Starting bot...')
+        this.fbLogger.log('Load', 'Starting bot...')
 
         this.loadCommands(this)
         await this.loadSlashCommands(this, false)
         this.loadEvents(this)
+
+        this.displayResult(this)
 
         this.connectToDb()
 
