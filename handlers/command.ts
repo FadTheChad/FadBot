@@ -7,7 +7,7 @@ const handler = (client: FadBotClient) => {
         if (folder === 'context') continue
 
         const commandFiles = fs.readdirSync(`./commands/${folder}`).filter(file => file.endsWith('js') || file.endsWith('ts')) // <= what could this possibly mean!?!?!?!
-        console.log(`\nSearching ${folder} commands...\n`)
+        client.fbLogger.log('Load', `Searching ${folder} commands...`, false, true)
 
         for (const file of commandFiles) {
             const req = require(`../commands/${folder}/${file}`)
@@ -16,7 +16,7 @@ const handler = (client: FadBotClient) => {
 
             client.commands.set(command.name, command)
 
-            console.log(`\t${file} has been loaded!`)
+            client.fbLogger.log('Command', `${file} has been loaded!`, true)
         }
     }
 }

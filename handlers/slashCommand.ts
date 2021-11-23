@@ -15,7 +15,7 @@ const handler = async (client: FadBotClient, forDeploy: boolean) => {
     for (const folder of client.categories) {
             
         const slashCommandFiles = fs.readdirSync(`./commands/${folder}`).filter(file => file.endsWith('js') || file.endsWith('ts'))
-        console.log(`\nSearching ${folder} slash commands...\n`)
+        client.fbLogger.log('Load', `Searching ${folder} slash commands...`, false, true)
 
         for (const slashFile of slashCommandFiles) {
             const req = require(`../commands/${folder}/${slashFile}`)
@@ -31,7 +31,7 @@ const handler = async (client: FadBotClient, forDeploy: boolean) => {
             if (!forDeploy) client.slashCommands.set(slashCommand.name, slashCommand)
             else arrayOfSlashCommands.push(slashCommand)
 
-            console.log(`\t${slashCommand.name} has been ${forDeploy ? 'deployed' : 'loaded'} as a Slash Command!`)
+            client.fbLogger.log('SlashCommand', `${slashCommand.name} has been ${forDeploy ? 'deployed' : 'loaded'} as a Slash Command!`, true)
         }
     }
         
@@ -46,7 +46,7 @@ const handler = async (client: FadBotClient, forDeploy: boolean) => {
                 }) }
             )
 
-            console.log('Successfully registered Slash Commands!')
+            client.fbLogger.log('Deployment', 'Successfully registered/deployed Slash Commands!')
         } catch (err) {
             console.error(err)
         }

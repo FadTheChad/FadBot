@@ -4,14 +4,14 @@ import IEvent from "../structure/interfaces/IEvent";
 
 const handler = (client: FadBotClient) => {
     const eventFiles = fs.readdirSync('./events').filter(file => file.endsWith('.js') || file.endsWith('ts'))
-    console.log('\nLoading events...\n')
+    client.fbLogger.log('Load', 'Loading events...', false, true)
 
     for (const file of eventFiles) {
 	    const req = require(`../events/${file}`)
 
         const event: IEvent = req.default
 
-        console.log(`\t ${event.name} event has been loaded!`)
+        client.fbLogger.log('Event', `${event.name} event has been loaded!`, true)
 	
         if (event.once) {
 		    client.once(event.name, (...args) => event.run(client, ...args))
