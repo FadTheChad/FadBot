@@ -47,7 +47,7 @@ const event: IEvent = {
             try {
                 await (slashCommand as ICommand).slashRun!(client, interaction)
             } catch (err) {
-                console.error(err)
+                client.fbLogger.error(err, 'SlashCommand')
 
                 const errEmbed = fbEmbed(
                     'error',
@@ -67,7 +67,7 @@ const event: IEvent = {
             try {
                 await (contextMenu as IContextCommand).contextRun!(client, interaction)
             } catch (err) {
-                console.error(err)
+                client.fbLogger.error(err, 'SlashCommand')
 
                 const errEmbed = fbEmbed(
                     'error',

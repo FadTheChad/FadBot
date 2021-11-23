@@ -57,10 +57,10 @@ const event: IEvent = {
         }
         try {
             command.run(client, message, args)
-            console.log(`\nCommand Ran!\nCommand: ${command.name}\nUser: ${message.author.username}\nGuild: ${message.guild ? message.guild.name : 'None'}\n`)
+            client.fbLogger.log('Command', `Command Ran!\n\tCommand: ${command.name}\n\tUser: ${message.author.username}\n\tGuild: ${message.guild ? message.guild.name : 'None'}\n`)
         }
         catch (err) {
-            console.error(`\nThere was an error running the command ${command.name}!\nError: ${err}`);
+            client.fbLogger.error(`There was an error running the command ${command.name}!\n\tError: ${err}`, 'Command');
             
             // You don't realize how many times i see this embed everyday
             const errEmbed = fbEmbed(
@@ -69,7 +69,7 @@ const event: IEvent = {
                 'Hey you!\nYeah you!\nif you\'re seeing this message, it means that the bot owner did a stinky in writing the code thus you receiving an error after trying to run a command. sorry bout that.'
             )
                 
-            message.channel.send({embeds: [errEmbed]})
+            message.channel.send({ embeds: [errEmbed] })
         }
     }   
 }
