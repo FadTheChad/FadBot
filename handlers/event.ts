@@ -11,6 +11,8 @@ const handler = (client: FadBotClient) => {
 
         const event: IEvent = req.default
 
+        client.events.set(event.name, event)
+
         client.fbLogger.log('Event', `${event.name} event has been loaded!`, true)
 	
         if (event.once) {
