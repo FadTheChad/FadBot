@@ -7,6 +7,7 @@ import mongoose, { ConnectOptions } from 'mongoose'
 import ICommand from "./interfaces/ICommand"
 import IContextCommand from './interfaces/IContextCommand'
 import IConfig from './interfaces/IConfig'
+import IEvent from './interfaces/IEvent'
 
 import _config from '../config.json'
 const config: IConfig = _config
@@ -37,6 +38,9 @@ export default class FadBotClient extends Client {
     public commands: Collection<string, ICommand> = new Collection()
     public slashCommands: Collection<string, ICommand | IContextCommand> = new Collection()
     public categories: string[] = readdirSync('./commands')
+
+    // Events
+    public events: Collection<string, IEvent> = new Collection()
 
     // Loaders
     public loadCommands = cmdHandler
