@@ -69,10 +69,17 @@ If you want to see some ideas/features that the bot could get, check out our [Tr
    - `guildId` is your Testing Guild/Server's ID. [For Slash Cmds]
    - `mongoURI` is the connection srv/local string of your mongoDB DB.
 
-4. And finally, run the bot!
+4. Run the test script in the `scripts` folder to check if everything is good to go.
+
+5. And finally, run the bot!
    ```shell
    ts-node .
    ```
+   Or
+   ```shell
+   npm start
+   ```
+
 # Contributing
 Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are greatly appreciated.
 
