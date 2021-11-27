@@ -25,6 +25,8 @@ let verifyResult = async () => {
 
     // Checks config.json
     check('Checking config file...')
+
+    // @ts-ignore
     let configReq = await import('../config.json').catch(() => err('Config file not found'))
     const config = configReq.default
 
