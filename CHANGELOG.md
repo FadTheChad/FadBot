@@ -1,5 +1,11 @@
 # Versions
 
+# 1.9.0 [27/11/21]
+- FadBotClient now has an 'event' property.
+- displayResult function now shows an event table aswell
+- botinfo cmd now shows FadBot's version dynamically.
+- (not really related to the bot that much but) Fixed testing script in `scripts` folder
+
 # 1.8.0 [23/11/21]
 - FBLogger is here!
 - Added a displayResult function which displays the command categories in a table
