@@ -6,7 +6,7 @@ let checkCount = -1
 
 const check = (message: any) => {
     checkCount++
-    return console.log(`\n[${chalk.rgb(66, 215, 245)(checkCount)}] ` + chalk.rgb(66, 215, 245)(message))
+    return console.log(`\n[${chalk.rgb(66, 215, 245)(checkCount.toString())}] ` + chalk.rgb(66, 215, 245)(message))
 }
 
 const success = (message: any) => console.log(chalk.rgb(0, 255, 0)('\t✓ ' + message))
