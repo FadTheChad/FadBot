@@ -49,7 +49,7 @@ const displayResult = (client: FadBotClient) => {
             chalk.rgb(255, 255, 255)((eventData.once ?? false).toString())
         ])
 
-        i++
+        i2++
     }
 
     console.log(table(data2, {
