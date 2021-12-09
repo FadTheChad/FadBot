@@ -6,5 +6,7 @@ export default interface IConfig {
     devs: Snowflake[]
     clientId: Snowflake
     guildId: Snowflake
-    mongoURI: string
+    mongoURI: string,
+    devToken?: string
+    devMode?: boolean
 }
