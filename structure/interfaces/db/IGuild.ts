@@ -1,4 +1,4 @@
-interface IChannelConfig {
+export interface IChannelConfig {
     id: string,
     text: string
 }
@@ -8,7 +8,7 @@ export interface IBLWords {
     level: number
 }
 
-interface IGuildConfig {
+export interface IGuildConfig {
     prefix: string,
     welcomeChannel: IChannelConfig,
     leaveChannel: IChannelConfig,
