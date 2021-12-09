@@ -1,5 +1,5 @@
 import { Message, MessageEmbed } from 'discord.js'
-import fbEmbed from '../../utils/fbEmbed-utils'
+import fbEmbed, { FBEmbed } from '../../utils/fbEmbed-utils'
 import ICommand from "../../structure/interfaces/ICommand";
 
 const command: ICommand = {
@@ -13,12 +13,15 @@ const command: ICommand = {
                 const latency = m.createdTimestamp - message.createdTimestamp
                 const apiLatency = Math.round(client.ws.ping)
 
-                const embed = fbEmbed('success', 'Pong!')
+                const embed = new FBEmbed()
+                    .setBase('success', 'Pong!')
                     .addField('Latency', `\`${latency}\`ms`)
                     .addField('API Latency', `\`${apiLatency}\`ms`)
                     .setFooter(message.author.id)
                     .setTimestamp()
-                
+
+                if (args[0] === '-dev') embed.turnFieldsToJSON()
+
                 m.edit({content: null, embeds: [embed]})
             })
     },
