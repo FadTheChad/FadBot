@@ -1,5 +1,14 @@
 # Versions
 
+# 1.10.0 [9/12/21]
+- It's been a while since the last update, but i am now happy to introduce the new version of fbEmbed, an FBEmbed class! Atm it's not fully finished and still has some methods remaining, but it's a start!
+- added dev props in config.json.
+- FBLogger colour depends on devMode.
+- Ping cmd now uses FBEmbed!
+- Added guild-setup-utils that will later be used
+- Some db interfaces that did not have an export, now do :)
+- Event Table Indexes were stuck at zero. Fixed!
+
 # 1.9.0 [27/11/21]
 - FadBotClient now has an 'event' property.
 - displayResult function now shows an event table aswell
