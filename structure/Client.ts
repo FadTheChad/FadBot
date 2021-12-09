@@ -51,7 +51,7 @@ export default class FadBotClient extends Client {
 
     // Custom Logging Util For FadBot (Inspired By 3vil's client.log)
     public fbLogger = new FBLogger({
-        primary: [255, 255, 0],
+        primary: [255, (config.devToken && config.devMode) ? 0 : 255, 0],
         secondary: [0, 0, 0]
     })
 
