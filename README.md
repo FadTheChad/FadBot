@@ -22,6 +22,7 @@ Here are some things that you can expect from the bot:
 * typescript (using ts-node)
 * FadBotClient (FadBot's Custom Client)
 * dbCache (FadBot's Custom dbCache Maps)
+* FBEmbed (FadBot's Custom MessageEmbed)
 
 ## Devs
 * Fad The Chad
