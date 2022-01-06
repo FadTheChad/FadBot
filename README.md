@@ -28,6 +28,10 @@ Here are some things that you can expect from the bot:
 ## Devs
 * Fad The Chad
 
+## Contributors
+* tonyG
+* Xapu/Ram
+
 ## Version
 **Current Version:** v1.10.0
 
@@ -108,6 +112,9 @@ We expect you to be respectful with each other and create a happy environment! S
 
 # License
 Distributed under the `GNU GPLv3` License. See [`LICENSE.txt`](https://github.com/FadTheChad/FadBot/blob/main/LICENSE.txt) for more information.
+
+## Disclaimer
+You are very free to implement some of FadBot features for your code. But it would really be nice if you give credit. Would mean a lot to me
 
 # Contact
 Our Support Discord Server: https://discord.gg/3tEGymY5pE
