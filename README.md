@@ -23,6 +23,7 @@ Here are some things that you can expect from the bot:
 * FadBotClient (FadBot's Custom Client)
 * dbCache (FadBot's Custom dbCache Maps)
 * FBEmbed (FadBot's Custom MessageEmbed)
+* FBLogger (FadBot's Logging Util)
 
 ## Devs
 * Fad The Chad
