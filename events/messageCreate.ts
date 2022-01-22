@@ -3,6 +3,7 @@ import fbEmbed from '../utils/fbEmbed-utils'
 import { getPrefix } from '../utils/db/prefix-utils'
 import { Message } from 'discord.js'
 import IEvent from '../structure/interfaces/IEvent'
+import { isBlacklisted } from '../utils/db/blacklisted-user-utils'
 
 const { prefix: guildPrefix , devs } = config
 
@@ -18,6 +19,8 @@ const event: IEvent = {
         if (message.content.match(new RegExp('^<@!?' + client.user!.id + '>'))) return message.reply(`My prefix is \`${prefix}\``)
 
         if (!message.content.startsWith(prefix) || message.author.bot) return
+
+        if (await isBlacklisted(message.author.id, client)) return message.reply('You are blacklisted lmao')
 
         const args = message.content.slice(prefix.length).trim().split(/ +/)
         const commandName = args.shift()!?.toLowerCase()
