@@ -1,5 +1,12 @@
 # Versions
 
+# 1.11.0 [22/1/22]
+- So uh been more than 1 month. Sorry for being lazy but finally, a kinda-working version of FBBlacklist is here!
+- Ping cmd now uses await syntax.
+- Botinfo cmd embed now has more fields.
+- Added a user blacklist check in messageCreate event.
+- Dropdown Help cmd is now finally fixed!
+
 # 1.10.0 [9/12/21]
 - It's been a while since the last update, but i am now happy to introduce the new version of fbEmbed, an FBEmbed class! Atm it's not fully finished and still has some methods remaining, but it's a start!
 - added dev props in config.json.

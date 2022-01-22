@@ -33,7 +33,7 @@ Here are some things that you can expect from the bot:
 * Xapu/Ram
 
 ## Version
-**Current Version:** v1.10.0
+**Current Version:** v1.11.0
 
 See `CHANGELOG.md` for all changes
 
