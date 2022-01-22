@@ -61,12 +61,14 @@ If you want to see some ideas/features that the bot could get, check out our [Tr
 
 3. Make a `config.json` file in the root of the directory and add:
     ```json
-    "token": "Your Token Here",
-    "prefix": "Your Prefix Here",
-    "devs": ["devId1", "devId2"],
-    "clientId": "Your Client ID Here",
-    "guildId": "Your Guild ID Here",
-    "mongoURI": "Your Mongodb Uri String Here"
+    {
+      "token": "Your Token Here",
+      "prefix": "Your Prefix Here",
+      "devs": ["devId1", "devId2"],
+      "clientId": "Your Client ID Here",
+      "guildId": "Your Guild ID Here",
+      "mongoURI": "Your Mongodb Uri String Here"
+    }
     ```
    - `token` is the Bot's Token. You can receive it from Discord's Developer Portal.
    - `prefix` is the bot's prefix.
