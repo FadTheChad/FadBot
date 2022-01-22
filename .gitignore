@@ -3,6 +3,7 @@ config.json
 
 commands/dev/industrial-revolution.ts
 utils/industrial-revolution-utils.ts
+commands/dev/op.ts
 
 ### WebStorm ###
 # Covers JetBrains IDEs: IntelliJ, RubyMine, PhpStorm, AppCode, PyCharm, CLion, Android Studio, WebStorm and Rider
