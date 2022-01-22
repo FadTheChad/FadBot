@@ -20,7 +20,7 @@ const command: ICommand = {
                 let addedWord = args[2]
                 let level = parseInt(args[1])
 
-                if (!addedWord || level == undefined || isNaN(level) || level < 0 || level > 3) return message.reply('dumb')
+                if (!addedWord || level == undefined || isNaN(level) || level < 0 || level > 2) return message.reply('dumb')
 
                 addBlacklistedWord(message.guild!.id, addedWord, level, client)
                 return message.reply('yay')
