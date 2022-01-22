@@ -8,7 +8,7 @@ import {
     Message,
     User,
     Interaction,
-    TextBasedChannels
+    TextBasedChannels, CommandInteraction
 } from 'discord.js'
 
 import { prefix } from '../config.json'
@@ -112,7 +112,7 @@ const helpManager = {
         message.channel.send({ embeds: [embed] })
     },
 
-    sendDropdownMenuHelp: async (client: FadBotClient, location: TextChannel | DMChannel | TextBasedChannels, author: User, isSlash?: boolean) => {
+    sendDropdownMenuHelp: async (client: FadBotClient, location: Message | CommandInteraction, author: User, isSlash?: boolean) => {
         const getHelpRow = (state: boolean) => {
             const helpMenu = new MessageSelectMenu()
 
@@ -139,7 +139,7 @@ const helpManager = {
             return row
         }
 
-        let initialMessage = await location.send({ embeds: [fbEmbed('success', 'Categories Loaded!')], components: [getHelpRow(false)] }).catch(() => { let initialMessage })
+        let initialMessage = await location.channel!.send({ embeds: [fbEmbed('success', 'Categories Loaded!')], components: [getHelpRow(false)] }).catch(() => { let initialMessage })
 
         if (!initialMessage) return
 
@@ -147,7 +147,7 @@ const helpManager = {
             return author.id === interaction.user.id
         }
 
-        const collector = location.awaitMessageComponent({
+        const collector = initialMessage.awaitMessageComponent({
             filter,
             time: 20000,
             componentType: 'SELECT_MENU'

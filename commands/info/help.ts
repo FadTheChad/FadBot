@@ -26,7 +26,7 @@ const command: ICommand = {
             }
         }
 
-        if (args[0]?.toLowerCase() === '-dd') return sendDropdownMenuHelp(client, message.channel, message.author, false)
+        if (args[0]?.toLowerCase() === '-dd') return sendDropdownMenuHelp(client, message, message.author, false)
 
         if (args[1]?.toLowerCase() === '-dm') {
             try {
