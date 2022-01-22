@@ -1,6 +1,6 @@
 import fbEmbed from '../../utils/fbEmbed-utils'
 import ICommand from '../../structure/interfaces/ICommand'
-import { version } from '../../package.json'
+import { version } from 'discord.js'
 
 const command: ICommand = {
     name: 'botinfo',
@@ -20,6 +20,8 @@ const command: ICommand = {
             .addField('Github', '[Leave us a star for support!](https://github.com/FadTheChad/FadBot)', true)
             .addField('Support Server', '[Join our Official Support Server!](https://discord.gg/3tEGymY5pE)', true)
             .addField('Trello', '[Get A Look At Upcoming Features and Ideas!](https://trello.com/b/4qiwoazB/fadbot-board)', true)
+            .addField('Node Version', process.version, true)
+            .addField('Discord.JS Version', version, true)
             .setThumbnail(`https://github.com/FadTheChad/FadBot/blob/main/public/${i !== 69 ? 'logo' : 'PlaceHolder'}.png?raw=true`)
 
         message.channel.send({ embeds: [embed] })
