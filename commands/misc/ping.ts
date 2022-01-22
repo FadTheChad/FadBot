@@ -7,23 +7,22 @@ const command: ICommand = {
     description: 'Ping!',
     aliases: ['test'],
     category: 'misc',
-    run (client, message, args) {
-        message.channel.send('Pinging...')
-            .then(m => {
-                const latency = m.createdTimestamp - message.createdTimestamp
-                const apiLatency = Math.round(client.ws.ping)
+    async run(client, message, args) {
+        const m = await message.channel.send('Pinging...')
 
-                const embed = new FBEmbed()
-                    .setBase('success', 'Pong!')
-                    .addField('Latency', `\`${latency}\`ms`)
-                    .addField('API Latency', `\`${apiLatency}\`ms`)
-                    .setFooter(message.author.id)
-                    .setTimestamp()
+        const latency = m.createdTimestamp - message.createdTimestamp
+        const apiLatency = Math.round(client.ws.ping)
 
-                if (args[0] === '-dev') embed.turnFieldsToJSON()
+        const embed = new FBEmbed()
+            .setBase('success', 'Pong!')
+            .addField('Latency', `\`${latency}\`ms`)
+            .addField('API Latency', `\`${apiLatency}\`ms`)
+            .setFooter(message.author.id)
+            .setTimestamp()
 
-                m.edit({content: null, embeds: [embed]})
-            })
+        if (args[0] === '-dev') embed.turnFieldsToJSON()
+
+        m.edit({content: null, embeds: [embed]})
     },
     async slashRun(client, interaction) {
         await interaction.deferReply()
